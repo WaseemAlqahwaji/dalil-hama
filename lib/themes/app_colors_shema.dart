@@ -32,7 +32,7 @@ class MainColorSchema extends AppColorsSchema {
 
   @override
   ShapeColors get shapeColor => ShapeColors(
-    cardColor: MainColor(Colors.transparent.toARGB32()),
+    cardColor: darkJungleGreen,
     backgroundColor: darkJungleGreen,
     borderColor: jetStream,
     navBar: darkJungleGreen,

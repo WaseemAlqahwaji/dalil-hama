@@ -2,13 +2,9 @@ import 'package:core_package/core_package.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 @module
 abstract class InjectableModule {
-  @preResolve
-  @lazySingleton
-  Future<SharedPreferences> get sharedPref => SharedPreferences.getInstance();
 
   @lazySingleton
   Dio get dioInstance {

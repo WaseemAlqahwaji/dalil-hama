@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //
+              Text("data")
             ],
           ),
         ),

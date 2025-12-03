@@ -51,14 +51,13 @@ class AppTheme {
   );
 }
 
-late AppColorsSchema _appColorsSchema;
 
-void setSchema(AppColorsSchema schema) {
-  _appColorsSchema = schema;
+AppColorsSchema getSchema() {
+  return MainColorSchema();
 }
 
 extension ThemeUtils on ThemeData {
   AppColorsSchema get appSchema {
-    return _appColorsSchema;
+    return getSchema();
   }
 }

@@ -2,6 +2,7 @@ import 'package:core_package/generated/core_translation/core_translations.dart';
 import 'package:dalil_hama/routing/observer_utils.dart';
 import 'package:dalil_hama/routing/route_info.dart';
 import 'package:dalil_hama/routing/routes.dart';
+import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,7 +16,13 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
+
 class _AppState extends State<App> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -29,6 +36,7 @@ class _AppState extends State<App> {
         ...CoreTranslations.supportedLocales,
       ],
       debugShowCheckedModeBanner: false,
+      theme: AppTheme(getSchema()).getThemeData(fontFamily: 'Cairo'),
       routerConfig: goRouterConfig,
     );
   }
@@ -53,6 +61,7 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
     );
   }
   return GoRoute(
+
     parentNavigatorKey: subRoute.useRootNavigator ? _rootNavigatorKey : null,
     path: subRoute.path!,
     name: subRoute.name ?? subRoute.path,
