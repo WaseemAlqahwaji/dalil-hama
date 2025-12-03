@@ -1,4 +1,4 @@
-import 'package:core_package/generated/generated_assets/assets.gen.dart';
+import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
