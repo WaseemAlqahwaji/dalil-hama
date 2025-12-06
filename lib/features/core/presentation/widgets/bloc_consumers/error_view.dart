@@ -1,5 +1,5 @@
+import 'package:core_package/core_package.dart';
 import 'package:core_package/generated/core_translation/core_translations.dart';
-import 'package:dalil_hama/features/core/domain/entity/failures.dart';
 import 'package:flutter/material.dart';
 class ErrorView extends StatefulWidget {
   final Function? onRetry;

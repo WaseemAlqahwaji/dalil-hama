@@ -1,5 +1,4 @@
-import 'package:dalil_hama/features/core/domain/entity/failures.dart';
-import 'package:dalil_hama/features/core/presentation/cubit/base_states/base_state.dart';
+import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/presentation/dialogs/dialog_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
