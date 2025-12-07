@@ -1,4 +1,6 @@
+import 'package:dalil_hama/features/core/presentation/page/main_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/splash_page.dart';
+import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
 import 'package:dalil_hama/routing/route_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -13,16 +15,24 @@ class Routes {
       builder: (context, state, child) => SplashPage(),
       path: SplashPage.path,
     ),
+    RouteInfo(
+      builder: (context, state, child) => MainPage(child: child!),
+      type: RouteType.shell,
+      path: MainPage.path,
+      routes: [
+        RouteInfo(
+          path: HomePage.path,
+          useRootNavigator: false,
+          builder: (context, state, child) => const HomePage(),
+        ),
+      ],
+    )
   ];
 }
 
-// List<String> tabs = [
-//   HomePage.path,
-//   if (!kReleaseMode) TournamentsPage.path,
-//   TeamsPage.path,
-//   BookingsPage.path,
-//   UserProfilePage.path,
-// ];
+List<String> tabs = [
+  HomePage.path,
+];
 
 extension R on BuildContext {
   Future<T?> pushNamedAndRemoveUntil<T extends Object?>(

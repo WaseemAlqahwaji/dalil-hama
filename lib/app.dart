@@ -16,13 +16,12 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
-
 class _AppState extends State<App> {
-
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -45,6 +44,7 @@ class _AppState extends State<App> {
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GoRouter goRouterConfig = GoRouter(
   observers: [ObserverUtils.routeObserver],
+  // TODO : change to splash page
   initialLocation: SplashPage.path,
   navigatorKey: _rootNavigatorKey,
   routes: _getRoutes(Routes.I.routes),
@@ -61,7 +61,6 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
     );
   }
   return GoRoute(
-
     parentNavigatorKey: subRoute.useRootNavigator ? _rootNavigatorKey : null,
     path: subRoute.path!,
     name: subRoute.name ?? subRoute.path,

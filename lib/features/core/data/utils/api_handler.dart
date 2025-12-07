@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:core_package/core_package.dart';
-import 'package:dio/dio.dart';
+import 'package:dalil_hama/features/core/domain/entity/failures.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -20,7 +20,7 @@ mixin ApiHandler {
       if (e.type == DioExceptionType.connectionTimeout ||
           e.type == DioExceptionType.sendTimeout ||
           e.type == DioExceptionType.receiveTimeout) {
-        return left(NetworkFailure(connectionTimeOut: true));
+        return left(TimeOutFailure());
       } else if (e.type == DioExceptionType.badResponse) {
         Map<String, dynamic> errorBody = {};
         try {
@@ -34,13 +34,18 @@ mixin ApiHandler {
         } catch (e) {
           debugPrint(e.toString());
         }
-        return left(ServerFailure(errorCode: errorBody['code']));
+        return left(
+          ServerFailure(
+            code: e.response?.statusCode ?? -1,
+            message: errorBody['error'] ?? 'حدث خطأ',
+          ),
+        );
       } else {
-        return left(NetworkFailure(connectionTimeOut: false));
+        return left(NetworkFailure());
       }
     } catch (e, stack) {
       _logger.e(e.toString(), error: e, stackTrace: stack);
-      return left(ServerFailure(errorCode: ServerErrorCode.serverError));
+      return left(InternalError());
     }
   }
 }

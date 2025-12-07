@@ -1,4 +1,6 @@
+import 'package:dalil_hama/features/core/presentation/page/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatefulWidget {
   static String path = "/SplashPage";
@@ -19,7 +21,10 @@ class _SplashPageState extends State<SplashPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text("data")
+              Text("data"),
+              TextButton(onPressed: (){
+                context.go(MainPage.path);
+              }, child: Text("kdlsjf"))
             ],
           ),
         ),

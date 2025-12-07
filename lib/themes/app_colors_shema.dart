@@ -14,6 +14,7 @@ abstract class AppColorsSchema {
   MainColor darkJungleGreen = MainColor(0xff091F22);
   MainColor japaneseIndigo = MainColor(0xff213E41);
   MainColor jetStream = MainColor(0xffBCCECF);
+  MainColor unselectedBottomBar = MainColor(0xffB7CFCF);
 
   TextColors get textColor;
 
@@ -26,7 +27,7 @@ abstract class AppColorsSchema {
 
 class MainColorSchema extends AppColorsSchema {
   @override
-  Brightness get brightness => Brightness.light;
+  Brightness get brightness => Brightness.dark;
   @override
   TextColors get textColor => TextColors(title: white, description: jetStream);
 
@@ -36,7 +37,7 @@ class MainColorSchema extends AppColorsSchema {
     backgroundColor: darkJungleGreen,
     borderColor: jetStream,
     navBar: darkJungleGreen,
-    iconColor: white,
+    iconColor: IconColor(selected: white, unSelected: jetStream),
     secondaryButton: graniteGrey,
   );
 
