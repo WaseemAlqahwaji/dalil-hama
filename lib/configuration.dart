@@ -7,7 +7,7 @@ abstract class Configuration {
 @Singleton(as: Configuration, env: ["dev"])
 class DevConfiguration extends Configuration {
   @override
-  String get getBaseUrl => "https://tashkelaapp.com/api/";
+  String get getBaseUrl => "http://localhost:5001/api/";
 }
 
 class AppEnvironment {
