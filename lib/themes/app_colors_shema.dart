@@ -14,7 +14,8 @@ abstract class AppColorsSchema {
   MainColor darkJungleGreen = MainColor(0xff091F22);
   MainColor japaneseIndigo = MainColor(0xff213E41);
   MainColor jetStream = MainColor(0xffBCCECF);
-  MainColor unselectedBottomBar = MainColor(0xffB7CFCF);
+  MainColor teal = MainColor(0xff017f81);
+  MainColor lighTeal = MainColor(0xff12A5B3);
 
   TextColors get textColor;
 
@@ -23,6 +24,8 @@ abstract class AppColorsSchema {
   StatusColors get statusColor;
 
   Brightness get brightness;
+
+  ScaffolGradientBackgroundColor get scaffolGradientBackgroundColor;
 }
 
 class MainColorSchema extends AppColorsSchema {
@@ -43,4 +46,12 @@ class MainColorSchema extends AppColorsSchema {
 
   @override
   StatusColors get statusColor => StatusColors(fail: red, success: green);
+
+  @override
+  ScaffolGradientBackgroundColor get scaffolGradientBackgroundColor =>
+      ScaffolGradientBackgroundColor(
+        backgroundColor: darkJungleGreen,
+        topRadialColor: teal,
+        bottomRadialColor: lighTeal,
+      );
 }

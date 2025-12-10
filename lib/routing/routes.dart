@@ -1,4 +1,4 @@
-import 'package:dalil_hama/features/core/presentation/page/main_page.dart';
+import 'package:dalil_hama/features/core/presentation/page/core_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/splash_page.dart';
 import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
 import 'package:dalil_hama/routing/route_info.dart';
@@ -16,9 +16,9 @@ class Routes {
       path: SplashPage.path,
     ),
     RouteInfo(
-      builder: (context, state, child) => MainPage(child: child!),
+      builder: (context, state, child) => CorePage(child: child!),
       type: RouteType.shell,
-      path: MainPage.path,
+      path: CorePage.path,
       routes: [
         RouteInfo(
           path: HomePage.path,

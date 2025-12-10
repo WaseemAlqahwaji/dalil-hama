@@ -44,7 +44,6 @@ class _AppState extends State<App> {
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GoRouter goRouterConfig = GoRouter(
   observers: [ObserverUtils.routeObserver],
-  // TODO : change to splash page
   initialLocation: SplashPage.path,
   navigatorKey: _rootNavigatorKey,
   routes: _getRoutes(Routes.I.routes),
@@ -54,6 +53,7 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
   subRoute,
 ) {
   if (subRoute.type == RouteType.shell) {
+    print("----------------------------");
     return ShellRoute(
       builder: (context, state, child) =>
           subRoute.builder(context, state, child),

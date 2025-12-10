@@ -119,6 +119,16 @@ class ShapeColors {
   });
 }
 
+class ScaffolGradientBackgroundColor {
+  final MainColor backgroundColor, topRadialColor, bottomRadialColor;
+
+  ScaffolGradientBackgroundColor({
+    required this.backgroundColor,
+    required this.topRadialColor,
+    required this.bottomRadialColor,
+  });
+}
+
 enum ColorType {
   shade5,
   shade10,
