@@ -31,7 +31,7 @@ dependencies:
   platform_identity:
     git: https://github.com/SalemZakkar/platform_identity.git
   core_package:
-    path: core_package
+    path: ../core_package
 
 dependency_overrides:
   analyzer: ^8.2.0
