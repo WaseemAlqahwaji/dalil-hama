@@ -16,13 +16,12 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
-
 class _AppState extends State<App> {
-
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
@@ -54,6 +53,7 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
   subRoute,
 ) {
   if (subRoute.type == RouteType.shell) {
+    print("----------------------------");
     return ShellRoute(
       builder: (context, state, child) =>
           subRoute.builder(context, state, child),
@@ -61,7 +61,6 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
     );
   }
   return GoRoute(
-
     parentNavigatorKey: subRoute.useRootNavigator ? _rootNavigatorKey : null,
     path: subRoute.path!,
     name: subRoute.name ?? subRoute.path,

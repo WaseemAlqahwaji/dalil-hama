@@ -88,10 +88,14 @@ class MainColor extends ColorSwatch<ColorType> {
 class StatusColors {
   Color success, fail;
 
-  StatusColors({
-    required this.fail,
-    required this.success,
-  });
+  StatusColors({required this.fail, required this.success});
+}
+
+class IconColor {
+  Color selected;
+  Color? unSelected;
+
+  IconColor({required this.selected, this.unSelected});
 }
 
 class TextColors {
@@ -101,11 +105,8 @@ class TextColors {
 }
 
 class ShapeColors {
-  MainColor backgroundColor,
-      cardColor,
-      navBar,
-      iconColor,
-      secondaryButton;
+  MainColor backgroundColor, cardColor, navBar, secondaryButton;
+  IconColor iconColor;
   Color borderColor;
 
   ShapeColors({
@@ -115,6 +116,16 @@ class ShapeColors {
     required this.navBar,
     required this.iconColor,
     required this.secondaryButton,
+  });
+}
+
+class ScaffolGradientBackgroundColor {
+  final MainColor backgroundColor, topRadialColor, bottomRadialColor;
+
+  ScaffolGradientBackgroundColor({
+    required this.backgroundColor,
+    required this.topRadialColor,
+    required this.bottomRadialColor,
   });
 }
 

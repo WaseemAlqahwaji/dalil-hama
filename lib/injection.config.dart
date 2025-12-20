@@ -14,6 +14,12 @@ import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart'
     as _i32;
 import 'package:dalil_hama/features/core/presentation/utils/file_manager.dart'
     as _i747;
+import 'package:dalil_hama/features/sections/data/repository/sections_repo_impl.dart'
+    as _i343;
+import 'package:dalil_hama/features/sections/data/source/sections_source.dart'
+    as _i439;
+import 'package:dalil_hama/features/sections/domain/repository/sections_repo.dart'
+    as _i365;
 import 'package:dalil_hama/injectable_module.dart' as _i1057;
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
@@ -37,8 +43,14 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i50.DevConfiguration(),
       registerFor: {_dev},
     );
+    gh.factory<_i439.SectionsSource>(
+      () => _i439.SectionsSourceImpl(gh<_i361.Dio>(), gh<_i50.Configuration>()),
+    );
     gh.singleton<_i747.FileManager>(
       () => _i747.FileManager(gh<_i50.Configuration>()),
+    );
+    gh.lazySingleton<_i365.SectionsRepo>(
+      () => _i343.SectionsRepoImpl(gh<_i439.SectionsSource>()),
     );
     return this;
   }

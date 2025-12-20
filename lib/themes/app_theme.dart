@@ -39,7 +39,7 @@ class AppTheme {
       backgroundColor: _schema.shapeColor.backgroundColor,
       selectedItemColor: _schema.primaryColor,
     ),
-    iconTheme: IconThemeData(color: _schema.shapeColor.iconColor),
+    iconTheme: IconThemeData(color: _schema.shapeColor.iconColor.selected),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: _schema.primaryColor,
