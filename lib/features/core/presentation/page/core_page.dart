@@ -1,7 +1,5 @@
-import 'package:dalil_hama/features/core/presentation/page/main_page.dart';
-import 'package:dalil_hama/features/core/presentation/utils/ext/dynamic_svg_ext.dart';
-import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
-import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
+import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/main_bottom_bar.dart';
 import 'package:dalil_hama/routing/routes.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,7 @@ import 'package:go_router/go_router.dart';
 class CorePage extends StatefulWidget {
   final Widget child;
   static final String path = "/CorePage";
+
   const CorePage({super.key, required this.child});
 
   @override
@@ -19,102 +18,10 @@ class CorePage extends StatefulWidget {
 class _MainPageState extends State<CorePage> {
   @override
   Widget build(BuildContext context) {
-    bool isRoute(String path) => GoRouter.of(context).state.path == path;
-    int index = tabs.indexOf(GoRouter.of(context).state.path!);
 
-    return MainPage(
-      body: Stack(
-        children: [
-          Positioned.fill(bottom: 80, child: widget.child),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).appSchema.shapeColor.navBar,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Assets.icons.home.dynamicSVGColor(
-                          context,
-                          color: isRoute(HomePage.path)
-                              ? Theme.of(
-                                  context,
-                                ).appSchema.shapeColor.iconColor.selected
-                              : Theme.of(
-                                  context,
-                                ).appSchema.shapeColor.iconColor.unSelected,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Assets.icons.home.dynamicSVGColor(
-                          context,
-                          color: isRoute(HomePage.path)
-                              ? Theme.of(
-                                  context,
-                                ).appSchema.shapeColor.iconColor.selected
-                              : Theme.of(
-                                  context,
-                                ).appSchema.shapeColor.iconColor.unSelected,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          // Positioned(
-          //   bottom: 0,
-          //   left: 0,
-          //   right: 0,
-          //   child: BottomNavigationBar(
-          //     type: BottomNavigationBarType.fixed,
-          //     currentIndex: index == -1 ? 0 : index,
-          //     onTap: (i) {
-          //       context.go(tabs[i]);
-          //     },
-
-          //     items: [
-          //       BottomNavigationBarItem(
-          //         icon: Assets.icons.home.dynamicSVGColor(
-          //           context,
-          //           color: isRoute(HomePage.path)
-          //               ? Theme.of(
-          //                   context,
-          //                 ).appSchema.shapeColor.iconColor.selected
-          //               : Theme.of(
-          //                   context,
-          //                 ).appSchema.shapeColor.iconColor.unSelected,
-          //         ),
-          //         label: "Home",
-          //       ),
-          //       BottomNavigationBarItem(
-          //         icon: Assets.icons.home.dynamicSVGColor(
-          //           context,
-          //           color: isRoute(HomePage.path)
-          //               ? Theme.of(
-          //                   context,
-          //                 ).appSchema.shapeColor.iconColor.selected
-          //               : Theme.of(
-          //                   context,
-          //                 ).appSchema.shapeColor.iconColor.unSelected,
-          //         ),
-          //         label: "Home",
-          //       ),
-          //     ],
-          //   ),
-          // ),
-        ],
-      ),
+    return GradientScaffold(
+      body: widget.child,
+      bottomNavigationBar: MainBottomBar(),
     );
   }
 }

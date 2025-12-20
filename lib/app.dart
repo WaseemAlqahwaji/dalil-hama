@@ -53,7 +53,6 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
   subRoute,
 ) {
   if (subRoute.type == RouteType.shell) {
-    print("----------------------------");
     return ShellRoute(
       builder: (context, state, child) =>
           subRoute.builder(context, state, child),

@@ -119,14 +119,10 @@ class ShapeColors {
   });
 }
 
-class ScaffolGradientBackgroundColor {
-  final MainColor backgroundColor, topRadialColor, bottomRadialColor;
+class AppGradients {
+  Gradient scaffoldGradient;
 
-  ScaffolGradientBackgroundColor({
-    required this.backgroundColor,
-    required this.topRadialColor,
-    required this.bottomRadialColor,
-  });
+  AppGradients({required this.scaffoldGradient});
 }
 
 enum ColorType {

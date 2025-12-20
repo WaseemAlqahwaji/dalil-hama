@@ -10,4 +10,16 @@ class TranslationsAr extends Translations {
 
   @override
   String get appName => 'دليل حماة';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get settings => 'الإعدادت';
+
+  @override
+  String get map => 'الخريطة';
+
+  @override
+  String get favourites => 'المفضلة';
 }

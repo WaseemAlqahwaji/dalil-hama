@@ -22,17 +22,37 @@ class AppTheme {
       backButtonIconBuilder: (context) =>
           CircleButton(icon: Assets.icons.back.dynamicSVGColor(context)),
     ),
-    scaffoldBackgroundColor: _schema.shapeColor.backgroundColor,
+    scaffoldBackgroundColor: Colors.transparent,
     cardColor: _schema.shapeColor.cardColor,
     brightness: _schema.brightness,
-    textTheme: TextTheme(),
+    textTheme: TextTheme(
+      headlineLarge: TextStyle(
+        color: _schema.textColor.title,
+        fontFamily: fontFamily,
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+      ),
+      headlineMedium: TextStyle(
+        color: _schema.textColor.title,
+        fontFamily: fontFamily,
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+      ),
+      headlineSmall: TextStyle(
+        color: _schema.textColor.title,
+        fontFamily: fontFamily,
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+      ),
+    ),
     dividerColor: _schema.shapeColor.borderColor,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       titleTextStyle: TextStyle(
         color: _schema.textColor.title,
         fontFamily: fontFamily,
-        fontSize: 16,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -50,7 +70,6 @@ class AppTheme {
     ),
   );
 }
-
 
 AppColorsSchema getSchema() {
   return MainColorSchema();

@@ -1,5 +1,4 @@
 import 'package:core_package/core_package.dart';
-import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 

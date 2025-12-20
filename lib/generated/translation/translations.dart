@@ -99,6 +99,30 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'دليل حماة'**
   String get appName;
+
+  /// No description provided for @home.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرئيسية'**
+  String get home;
+
+  /// No description provided for @settings.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإعدادت'**
+  String get settings;
+
+  /// No description provided for @map.
+  ///
+  /// In ar, this message translates to:
+  /// **'الخريطة'**
+  String get map;
+
+  /// No description provided for @favourites.
+  ///
+  /// In ar, this message translates to:
+  /// **'المفضلة'**
+  String get favourites;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {
