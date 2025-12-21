@@ -22,4 +22,7 @@ class TranslationsAr extends Translations {
 
   @override
   String get favourites => 'المفضلة';
+
+  @override
+  String get searchForAnything => 'ابحث عن شيء دكتور، صيدلية، مطعم ...';
 }
