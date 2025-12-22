@@ -4,5 +4,7 @@
   "settings" : "الإعدادت",
   "map" : "الخريطة",
   "favourites" : "المفضلة",
-  "searchForAnything" : "ابحث عن شيء دكتور، صيدلية، مطعم ..."
+  "searchForAnything" : "ابحث عن شيء دكتور، صيدلية، مطعم ...",
+  "posts" : "المنشورات",
+  "advertisements" : "الإعلانات"
 }

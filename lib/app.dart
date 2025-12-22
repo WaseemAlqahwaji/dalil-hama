@@ -37,6 +37,27 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       theme: AppTheme(getSchema()).getThemeData(fontFamily: 'Cairo'),
       routerConfig: goRouterConfig,
+      builder: (context, child) {
+        return Builder(
+          builder: (context) {
+            if (child == null) {
+              return const SizedBox.shrink();
+            }
+            return GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+              child: MediaQuery(
+                data: MediaQuery.of(
+                  context,
+                ).copyWith(textScaler: TextScaler.linear(0.9)),
+                child: child,
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
@@ -65,9 +86,9 @@ List<RouteBase> _getRoutes(List<RouteInfo>? routes) => (routes ?? []).map((
     name: subRoute.name ?? subRoute.path,
     builder: (context, state) => subRoute.builder(context, state, null),
     routes: _getRoutes(subRoute.routes),
-    // pageBuilder: tabs.contains(subRoute.path)
-    //     ? (context, state) =>
-    //     NoTransitionPage(child: subRoute.builder(context, state, null))
-    //     : null,
+    pageBuilder: tabs.contains(subRoute.path)
+        ? (context, state) =>
+              NoTransitionPage(child: subRoute.builder(context, state, null))
+        : null,
   );
 }).toList();

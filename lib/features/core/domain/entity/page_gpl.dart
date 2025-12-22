@@ -1,6 +1,6 @@
 class PageGpl {
   bool hasNextPage;
-  String endCursor;
+  String? endCursor;
 
   PageGpl({required this.endCursor, required this.hasNextPage});
 }

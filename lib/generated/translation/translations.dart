@@ -129,6 +129,18 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'ابحث عن شيء دكتور، صيدلية، مطعم ...'**
   String get searchForAnything;
+
+  /// No description provided for @posts.
+  ///
+  /// In ar, this message translates to:
+  /// **'المنشورات'**
+  String get posts;
+
+  /// No description provided for @advertisements.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإعلانات'**
+  String get advertisements;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

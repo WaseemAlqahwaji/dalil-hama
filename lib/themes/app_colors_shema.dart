@@ -17,6 +17,7 @@ abstract class AppColorsSchema {
   MainColor teal = MainColor(0xff017f81);
   MainColor lightTeal = MainColor(0xff12A5B3);
   MainColor drainTree = MainColor(0xff012426);
+  MainColor holly = MainColor(0xff001718);
 
   TextColors get textColor;
 
@@ -38,7 +39,7 @@ class MainColorSchema extends AppColorsSchema {
 
   @override
   ShapeColors get shapeColor => ShapeColors(
-    cardColor: darkJungleGreen,
+    cardColor: holly.withValues(alpha: 0.3),
     backgroundColor: darkJungleGreen,
     borderColor: jetStream,
     navBar: darkJungleGreen,

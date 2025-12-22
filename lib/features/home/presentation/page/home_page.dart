@@ -1,12 +1,13 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
-import 'package:dalil_hama/features/search/presentation/page/search_page.dart';
+import 'package:dalil_hama/features/post/presentation/pages/posts_page.dart';
 import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   static final String path = "/HomePage";
+
   const HomePage({super.key});
 
   @override
@@ -24,13 +25,12 @@ class _HomePageState extends State<HomePage> {
           children: [
             InkWellWithoutFeedback(
               onTap: () {
-                context.pushNamed(SearchPage.path);
-                
+                // context.pushNamed(SearchPage.path);
+                context.pushNamed(PostsPage.path, extra: "restaurants");
               },
               child: TextFormField(
                 enabled: false,
-                onTap: () {
-                },
+                onTap: () {},
                 decoration: InputDecoration(
                   hint: Text(context.translation.searchForAnything),
                   prefixIcon: Padding(

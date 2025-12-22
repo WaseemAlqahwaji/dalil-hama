@@ -105,7 +105,7 @@ class TextColors {
 }
 
 class ShapeColors {
-  MainColor backgroundColor, cardColor, navBar, secondaryButton;
+  Color backgroundColor, cardColor, navBar, secondaryButton;
   IconColor iconColor;
   Color borderColor;
 

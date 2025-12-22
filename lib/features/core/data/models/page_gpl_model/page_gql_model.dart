@@ -6,7 +6,7 @@ part 'page_gql_model.g.dart';
 @JsonSerializable()
 class PageGqlModel {
   bool hasNextPage;
-  String endCursor;
+  String? endCursor;
 
   PageGqlModel({required this.endCursor, required this.hasNextPage});
 

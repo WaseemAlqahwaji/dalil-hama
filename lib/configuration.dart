@@ -7,7 +7,7 @@ abstract class Configuration {
 @Singleton(as: Configuration, env: ["dev"])
 class DevConfiguration extends Configuration {
   @override
-  String get getBaseUrl => "http://localhost:5001/api/";
+  String get getBaseUrl => "http://10.0.2.2:5001/";
 }
 
 class AppEnvironment {

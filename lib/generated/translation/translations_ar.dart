@@ -25,4 +25,10 @@ class TranslationsAr extends Translations {
 
   @override
   String get searchForAnything => 'ابحث عن شيء دكتور، صيدلية، مطعم ...';
+
+  @override
+  String get posts => 'المنشورات';
+
+  @override
+  String get advertisements => 'الإعلانات';
 }

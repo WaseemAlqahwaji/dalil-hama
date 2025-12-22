@@ -9,6 +9,6 @@ part of 'page_gql_model.dart';
 // **************************************************************************
 
 PageGqlModel _$PageGqlModelFromJson(Map json) => PageGqlModel(
-  endCursor: json['endCursor'] as String,
+  endCursor: json['endCursor'] as String?,
   hasNextPage: json['hasNextPage'] as bool,
 );
