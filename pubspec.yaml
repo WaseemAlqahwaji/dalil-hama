@@ -31,6 +31,7 @@ dependencies:
     git: https://github.com/SalemZakkar/platform_identity.git
   core_package:
     path: ../core_package
+  graphql_flutter: ^5.2.1
 
 dependency_overrides:
   analyzer: ^8.2.0

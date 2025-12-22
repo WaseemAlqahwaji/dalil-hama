@@ -1,7 +1,7 @@
+import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
-import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
+import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatefulWidget {
   static String path = "/SplashPage";
@@ -16,12 +16,36 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((e){
-      context.go(HomePage.path);
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((e){
+    //   context.go(HomePage.path);
+    // });
   }
+
   @override
   Widget build(BuildContext context) {
-    return GradientScaffold();
+    return GradientScaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          PostGetParams params = PostGetParams(slug: "pharmacies" , first: 10);
+          Dio dio = Dio();
+          dio.interceptors.add(
+            UnifiInterceptor(
+              request: true,
+              responseBody: true,
+              requestBody: true,
+              requestHeader: true,
+              responseHeader: true,
+              usePrint: false,
+            ),
+          );
+          dio.post(
+            "http://10.0.2.2:5001/graphql",
+            data: {
+              "query" : params.getGraphQlQuery(),
+            },
+          );
+        },
+      ),
+    );
   }
 }
