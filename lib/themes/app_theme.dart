@@ -19,12 +19,39 @@ class AppTheme {
       error: _schema.red,
     ),
     actionIconTheme: ActionIconThemeData(
-      backButtonIconBuilder: (context) =>
-          CircleButton(icon: Assets.icons.back.dynamicSVGColor(context)),
+      backButtonIconBuilder: (context) => CircleButton(
+        padding: EdgeInsets.all(8),
+        icon: Assets.icons.back.dynamicSVGColor(context),
+      ),
     ),
     scaffoldBackgroundColor: Colors.transparent,
     cardColor: _schema.shapeColor.cardColor,
     brightness: _schema.brightness,
+    inputDecorationTheme: InputDecorationTheme(
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide.none,
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: _schema.statusColor.fail),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: _schema.statusColor.fail),
+      ),
+      border: InputBorder.none,
+      fillColor: _schema.shapeColor.navBar.withValues(alpha: .5),
+      filled: true,
+    ),
     textTheme: TextTheme(
       headlineLarge: TextStyle(
         color: _schema.textColor.title,

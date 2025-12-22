@@ -123,6 +123,12 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'المفضلة'**
   String get favourites;
+
+  /// No description provided for @searchForAnything.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث عن شيء دكتور، صيدلية، مطعم ...'**
+  String get searchForAnything;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

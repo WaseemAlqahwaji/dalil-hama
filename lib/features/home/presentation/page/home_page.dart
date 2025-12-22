@@ -1,5 +1,9 @@
+import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
+import 'package:dalil_hama/features/search/presentation/page/search_page.dart';
+import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   static final String path = "/HomePage";
@@ -13,8 +17,31 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.translation.home),
+      appBar: AppBar(title: Text(context.translation.home), actions: []),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            InkWellWithoutFeedback(
+              onTap: () {
+                context.pushNamed(SearchPage.path);
+                
+              },
+              child: TextFormField(
+                enabled: false,
+                onTap: () {
+                },
+                decoration: InputDecoration(
+                  hint: Text(context.translation.searchForAnything),
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Assets.icons.search.svg(),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
