@@ -114,11 +114,23 @@ class _ListViewPaginationWidgetState<T>
         bloc: widget.paginationCubit,
         listener: (context, state) {
           /// to scroll to loading
-          if (state.isPaginateInProgress) {
-            jumpToLast();
-          }
+          // if (state.isPaginateInProgress) {
+          //   jumpToLast();
+          // }
           if (!state.isPaginateInProgress) {
             autoScrollLock = false;
+          }
+          if(state.isSuccess){
+            WidgetsBinding.instance.addPostFrameCallback((e){
+              if (scrollController.offset ==
+                  scrollController.position.maxScrollExtent &&
+                  !widget.paginationCubit.state.isInProgress &&
+                  !widget.paginationCubit.state.hasReachedMax &&
+                  !widget.paginationCubit.state.isFailure &&
+                  !widget.paginationCubit.state.isPaginateFailure) {
+                widget.paginationCubit.paginate();
+              }
+            });
           }
         },
         builder: (context, state) {

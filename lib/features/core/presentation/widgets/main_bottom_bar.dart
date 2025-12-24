@@ -4,7 +4,6 @@ import 'package:dalil_hama/features/core/presentation/utils/ext/dynamic_svg_ext.
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
 import 'package:dalil_hama/features/map/presentation/map_page.dart';
-import 'package:dalil_hama/features/post/presentation/post_favourite_page.dart';
 import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -46,13 +45,13 @@ class _MainBottomBarState extends State<MainBottomBar> {
                 image: Assets.icons.map,
               ),
             ),
-            Expanded(
-              child: _BottomIcon(
-                title: context.translation.favourites,
-                route: PostFavouritePage.path,
-                image: Assets.icons.fav,
-              ),
-            ),
+            // Expanded(
+            //   child: _BottomIcon(
+            //     title: context.translation.favourites,
+            //     route: PostFavouritePage.path,
+            //     image: Assets.icons.fav,
+            //   ),
+            // ),
             Expanded(
               child: _BottomIcon(
                 title: context.translation.settings,

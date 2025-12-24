@@ -1,11 +1,13 @@
 {
-  "appName": "دليل حماة",
-  "home": "الرئيسية",
-  "settings": "الإعدادت",
   "map": "الخريطة",
-  "favourites": "المفضلة",
-  "searchForAnything": "ابحث عن شيء دكتور، صيدلية، مطعم ...",
   "selectSection": "اختر القطاع لتصفح الأماكن والخدمات",
   "mainSections": "القطاعات الرئيسية",
-  "dalilHama": "دليل محافظة حماة"
+  "dalilHama": "دليل محافظة حماة",
+  "appName" : "دليل حماة",
+  "home" : "الرئيسية",
+  "settings" : "الإعدادت",
+  "favourites" : "المفضلة",
+  "searchForAnything" : "ابحث عن شيء دكتور، صيدلية، مطعم ...",
+  "posts" : "المنشورات",
+  "advertisements" : "الإعلانات"
 }

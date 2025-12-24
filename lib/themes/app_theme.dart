@@ -53,24 +53,97 @@ class AppTheme {
       filled: true,
     ),
     textTheme: TextTheme(
-      headlineLarge: TextStyle(
+      displayLarge: TextStyle(
+        fontSize: 57.0, // up from 57
+        fontWeight: FontWeight.w400,
+        letterSpacing: -0.5,
         color: _schema.textColor.title,
-        fontFamily: fontFamily,
-        fontSize: 22,
-        fontWeight: FontWeight.w700,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 45.0, // up from 45
+        fontWeight: FontWeight.w400,
+        letterSpacing: -0.25,
+        color: _schema.textColor.title,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 36.0, // up from 36
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.0,
+        color: _schema.textColor.description,
+      ),
+      headlineLarge: TextStyle(
+        fontSize: 32.0, // up from 32
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.0,
+        color: _schema.textColor.title,
       ),
       headlineMedium: TextStyle(
+        fontSize: 28.0, // up from 28
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.0,
         color: _schema.textColor.title,
-        fontFamily: fontFamily,
-        fontSize: 20,
-        fontWeight: FontWeight.w700,
       ),
       headlineSmall: TextStyle(
+        fontSize: 24.0, // up from 24
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.0,
         color: _schema.textColor.title,
-        fontFamily: fontFamily,
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
       ),
+      titleLarge: TextStyle(
+        fontSize: 22.0, // up from 22
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.0,
+        color: _schema.textColor.title,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 16.0, // up from 16
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.15,
+        color: _schema.textColor.title,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 14.0, // up from 14
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
+        color: _schema.textColor.title,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 16.0, // up from 16
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.5,
+        color: _schema.textColor.description,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14.0, // up from 14
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
+        color: _schema.textColor.description,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 12.0, // up from 12
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.4,
+        color: _schema.textColor.description,
+      ),
+      labelLarge: TextStyle(
+        fontSize: 14.0, // up from 14
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
+        color: _schema.textColor.title,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 12.0, // up from 12
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.5,
+        color: _schema.textColor.title,
+      ),
+      labelSmall: TextStyle(
+        fontSize: 11.0, // up from 11
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.5,
+        color: _schema.textColor.title,
+      ),
+
     ),
     dividerColor: _schema.shapeColor.borderColor,
     appBarTheme: AppBarTheme(

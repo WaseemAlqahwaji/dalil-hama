@@ -9,22 +9,7 @@ class TranslationsAr extends Translations {
   TranslationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'دليل حماة';
-
-  @override
-  String get home => 'الرئيسية';
-
-  @override
-  String get settings => 'الإعدادت';
-
-  @override
   String get map => 'الخريطة';
-
-  @override
-  String get favourites => 'المفضلة';
-
-  @override
-  String get searchForAnything => 'ابحث عن شيء دكتور، صيدلية، مطعم ...';
 
   @override
   String get selectSection => 'اختر القطاع لتصفح الأماكن والخدمات';
@@ -34,4 +19,25 @@ class TranslationsAr extends Translations {
 
   @override
   String get dalilHama => 'دليل محافظة حماة';
+
+  @override
+  String get appName => 'دليل حماة';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get settings => 'الإعدادت';
+
+  @override
+  String get favourites => 'المفضلة';
+
+  @override
+  String get searchForAnything => 'ابحث عن شيء دكتور، صيدلية، مطعم ...';
+
+  @override
+  String get posts => 'المنشورات';
+
+  @override
+  String get advertisements => 'الإعلانات';
 }

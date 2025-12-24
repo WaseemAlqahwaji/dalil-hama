@@ -20,8 +20,32 @@ class _SplashPageState extends State<SplashPage> {
       context.go(HomePage.path);
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return GradientScaffold();
+    return GradientScaffold(
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     PostGetParams params = PostGetParams(slug: "pharmacies" , first: 10);
+      //     Dio dio = Dio();
+      //     dio.interceptors.add(
+      //       UnifiInterceptor(
+      //         request: true,
+      //         responseBody: true,
+      //         requestBody: true,
+      //         requestHeader: true,
+      //         responseHeader: true,
+      //         usePrint: false,
+      //       ),
+      //     );
+      //     dio.post(
+      //       "http://10.0.2.2:5001/graphql",
+      //       data: {
+      //         "query" : params.getGraphQlQuery(),
+      //       },
+      //     );
+      //   },
+      // ),
+    );
   }
 }

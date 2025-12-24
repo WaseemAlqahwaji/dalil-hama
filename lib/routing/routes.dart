@@ -3,8 +3,10 @@ import 'package:dalil_hama/features/core/presentation/page/settings_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/splash_page.dart';
 import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
 import 'package:dalil_hama/features/map/presentation/map_page.dart';
-import 'package:dalil_hama/features/post/presentation/post_favourite_page.dart';
+import 'package:dalil_hama/features/post/presentation/pages/post_favourite_page.dart';
+import 'package:dalil_hama/features/post/presentation/pages/posts_page.dart';
 import 'package:dalil_hama/features/search/presentation/page/search_page.dart';
+import 'package:dalil_hama/features/services/domain/entity/service.dart';
 import 'package:dalil_hama/routing/route_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -52,10 +54,20 @@ class Routes {
         ),
       ],
     ),
+    RouteInfo(
+      builder: (context, state, child) =>
+          PostsPage(service: state.extra as Service),
+      path: PostsPage.path,
+    ),
   ];
 }
 
-List<String> tabs = [HomePage.path];
+List<String> tabs = [
+  HomePage.path,
+  MapPage.path,
+  PostFavouritePage.path,
+  SettingsPage.path,
+];
 
 extension R on BuildContext {
   Future<T?> pushNamedAndRemoveUntil<T extends Object?>(

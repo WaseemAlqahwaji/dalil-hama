@@ -8,6 +8,7 @@ class GradientScaffold extends Scaffold {
     super.body,
     super.bottomNavigationBar,
     super.extendBodyBehindAppBar = true,
+    super.floatingActionButton,
   });
 
   @override
@@ -18,6 +19,7 @@ class _GradientScaffoldState extends ScaffoldState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: widget.floatingActionButton,
       bottomNavigationBar: widget.bottomNavigationBar,
       backgroundColor: Colors.transparent,
       appBar: widget.appBar,
@@ -36,7 +38,15 @@ class _GradientScaffoldState extends ScaffoldState {
                 ),
               ),
             ),
-            Positioned.fill(child: widget.body ?? const SizedBox()),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              top: widget.appBar?.preferredSize.height != null
+                  ? widget.appBar!.preferredSize.height + 32
+                  : 0,
+              child: widget.body ?? const SizedBox(),
+            ),
           ],
         ),
       ),
