@@ -31,7 +31,9 @@ class _MapPageState extends State<MapPage> {
     return Scaffold(
       appBar: AppBar(title: Text(context.translation.map)),
       body: Container(
-        constraints: const BoxConstraints.expand(),
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+        margin: const EdgeInsets.only(bottom: 118, left: 8, right: 8, top: 8),
         child: MapClusterWidget(
           mapClusterController: mapClusterController,
           clusterMarkerBuilder: (context, cl) {
@@ -44,7 +46,10 @@ class _MapPageState extends State<MapPage> {
                   shape: BoxShape.circle,
                   color: Theme.of(context).primaryColor,
                 ),
-                child: Text(cl.items.length.toString() , style: TextStyle(fontSize: 22),),
+                child: Text(
+                  cl.items.length.toString(),
+                  style: TextStyle(fontSize: 22),
+                ),
               ),
               size: Size(48, 48),
             );

@@ -56,7 +56,7 @@ class Routes {
     ),
     RouteInfo(
       builder: (context, state, child) =>
-          PostsPage(service: state.extra as Service),
+          PostsPage(service: state.extra as KService),
       path: PostsPage.path,
     ),
   ];

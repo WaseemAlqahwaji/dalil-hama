@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 
 class PostsPage extends StatefulWidget {
   static String path = "/PostsPage";
-  final Service service;
+  final KService service;
 
   const PostsPage({super.key, required this.service});
 
