@@ -46,13 +46,13 @@ class _MainBottomBarState extends State<MainBottomBar> {
                 image: Assets.icons.map,
               ),
             ),
-            Expanded(
-              child: _BottomIcon(
-                title: context.translation.favourites,
-                route: PostFavouritePage.path,
-                image: Assets.icons.fav,
-              ),
-            ),
+            // Expanded(
+            //   child: _BottomIcon(
+            //     title: context.translation.favourites,
+            //     route: PostFavouritePage.path,
+            //     image: Assets.icons.fav,
+            //   ),
+            // ),
             Expanded(
               child: _BottomIcon(
                 title: context.translation.settings,

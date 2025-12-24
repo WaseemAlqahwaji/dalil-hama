@@ -6,14 +6,15 @@ import 'package:dalil_hama/features/post/domain/entity/post.dart';
 import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
 import 'package:dalil_hama/features/post/presentation/cubit/posts_get_cubit.dart';
 import 'package:dalil_hama/features/post/presentation/widget/post_card.dart';
+import 'package:dalil_hama/features/services/domain/entity/service.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
 
 class PostsPage extends StatefulWidget {
   static String path = "/PostsPage";
-  final String slug;
+  final Service service;
 
-  const PostsPage({super.key, required this.slug});
+  const PostsPage({super.key, required this.service});
 
   @override
   State<PostsPage> createState() => _PostsPageState();
@@ -27,7 +28,11 @@ class _PostsPageState extends State<PostsPage> {
   @override
   void initState() {
     super.initState();
-    params = PostGetParams(slug: widget.slug, first: 10);
+    params = PostGetParams(
+      slug: widget.service.slug,
+      first: 10,
+      serviceId: widget.service.serviceId,
+    );
   }
 
   @override
@@ -48,10 +53,12 @@ class _PostsPageState extends State<PostsPage> {
           child: Column(
             children: [
               4.height(),
-              SearchTextField(onChanged: (v) {
-                params.title = v.valOrNull;
-                cubit.get(params: params);
-              }),
+              SearchTextField(
+                onChanged: (v) {
+                  params.title = v.valOrNull;
+                  cubit.get(params: params);
+                },
+              ),
               16.height(),
               ListViewPaginationWidget<Post>(
                 paginationCubit: cubit,

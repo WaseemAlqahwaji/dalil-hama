@@ -7,6 +7,8 @@ part 'post_remote_source.g.dart';
 
 abstract class PostRemoteSource {
   Future getPosts(String query);
+
+  Future getSchemaById(String serviceId);
 }
 
 @RestApi()
@@ -20,4 +22,8 @@ abstract class PostRemoteSourceImpl extends PostRemoteSource {
   @POST("graphql")
   @override
   Future getPosts(@Field("query") String query);
+
+  @GET("api/schemas/{id}")
+  @override
+  Future getSchemaById(@Path("id") String serviceId);
 }

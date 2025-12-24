@@ -1,13 +1,19 @@
-
 import 'package:dalil_hama/features/core/domain/params/base_params.dart';
 
 class PostGetParams extends BaseParams {
   String? title;
   String slug;
+  String serviceId;
   String? after;
   int? first;
 
-  PostGetParams({required this.slug, this.title, this.after, this.first});
+  PostGetParams({
+    required this.slug,
+    required this.serviceId,
+    this.title,
+    this.after,
+    this.first,
+  });
 
   String getGraphQlQuery() {
     String q =

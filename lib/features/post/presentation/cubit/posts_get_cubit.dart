@@ -20,6 +20,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
       title: params.title,
       first: params.first,
       after: params.after,
+      serviceId: params.serviceId,
     );
     emit(state.setInProgressState());
     final result = await postRepository.getPosts(params);

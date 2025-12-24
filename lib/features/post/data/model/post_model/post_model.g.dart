@@ -8,5 +8,7 @@ part of 'post_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PostModel _$PostModelFromJson(Map json) =>
-    PostModel(title: json['title'] as String);
+PostModel _$PostModelFromJson(Map json) => PostModel(
+  title: json['title'] as String,
+  payload: Map<String, dynamic>.from(json['payload'] as Map),
+);
