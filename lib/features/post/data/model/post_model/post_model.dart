@@ -7,13 +7,14 @@ part 'post_model.g.dart';
 class PostModel {
   String title;
   Map<String, dynamic> payload;
+  final String? imageUrl;
 
-  PostModel({required this.title, required this.payload});
+  PostModel({required this.title, required this.payload, this.imageUrl});
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>
       _$PostModelFromJson(json);
 }
 
 extension MapToDomain on PostModel {
-  Post toDomain() => Post(title: title , );
+  Post toDomain() => Post(title: title, imageUrl: imageUrl);
 }

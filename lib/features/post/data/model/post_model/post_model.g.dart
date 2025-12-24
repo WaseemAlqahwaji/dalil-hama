@@ -11,4 +11,5 @@ part of 'post_model.dart';
 PostModel _$PostModelFromJson(Map json) => PostModel(
   title: json['title'] as String,
   payload: Map<String, dynamic>.from(json['payload'] as Map),
+  imageUrl: json['imageUrl'] as String?,
 );
