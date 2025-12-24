@@ -25,4 +25,13 @@ class TranslationsAr extends Translations {
 
   @override
   String get searchForAnything => 'ابحث عن شيء دكتور، صيدلية، مطعم ...';
+
+  @override
+  String get selectSection => 'اختر القطاع لتصفح الأماكن والخدمات';
+
+  @override
+  String get mainSections => 'القطاعات الرئيسية';
+
+  @override
+  String get dalilHama => 'دليل محافظة حماة';
 }

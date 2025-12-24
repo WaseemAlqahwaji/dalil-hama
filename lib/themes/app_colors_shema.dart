@@ -40,7 +40,7 @@ class MainColorSchema extends AppColorsSchema {
   ShapeColors get shapeColor => ShapeColors(
     cardColor: darkJungleGreen,
     backgroundColor: darkJungleGreen,
-    borderColor: jetStream,
+    borderColor: white.withValues(alpha: .1),
     navBar: darkJungleGreen,
     iconColor: IconColor(selected: white, unSelected: jetStream),
     secondaryButton: graniteGrey,

@@ -129,6 +129,24 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'ابحث عن شيء دكتور، صيدلية، مطعم ...'**
   String get searchForAnything;
+
+  /// No description provided for @selectSection.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر القطاع لتصفح الأماكن والخدمات'**
+  String get selectSection;
+
+  /// No description provided for @mainSections.
+  ///
+  /// In ar, this message translates to:
+  /// **'القطاعات الرئيسية'**
+  String get mainSections;
+
+  /// No description provided for @dalilHama.
+  ///
+  /// In ar, this message translates to:
+  /// **'دليل محافظة حماة'**
+  String get dalilHama;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {
