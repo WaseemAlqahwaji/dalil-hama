@@ -1,0 +1,128 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:core_package/core_package.dart';
+import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
+import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/bloc_consumers/consumer_widget.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/bloc_consumers/list_view_pagination_widget.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/main_app_bar.dart';
+import 'package:dalil_hama/features/post/domain/entity/post.dart';
+import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
+import 'package:dalil_hama/features/post/presentation/cubit/posts_get_cubit.dart';
+import 'package:dalil_hama/features/post/presentation/widget/post_card.dart';
+import 'package:dalil_hama/features/sections/domain/entity/section.dart';
+import 'package:dalil_hama/features/services/domain/entity/service.dart';
+import 'package:dalil_hama/features/services/presentation/cubit/services_get_cubit.dart';
+import 'package:dalil_hama/features/services/presentation/widget/service_chip_list.dart';
+import 'package:dalil_hama/injection.dart';
+import 'package:flutter/material.dart';
+
+class PostsPageCopy extends StatefulWidget {
+  static String path = "/PostsPageCopy";
+  final Section section;
+
+  const PostsPageCopy({super.key, required this.section});
+
+  @override
+  State<PostsPageCopy> createState() => _PostsPageCopyState();
+}
+
+class _PostsPageCopyState extends State<PostsPageCopy> {
+  final postCubit = getIt<PostsGetCubit>();
+  final serviceCubit = getIt<ServicesGetCubit>();
+  late PostGetParams params;
+  ScrollController scrollController = ScrollController();
+  KService? selectedService;
+
+  @override
+  void initState() {
+    serviceCubit.get(sectionId: widget.section.id);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    scrollController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GradientScaffold(
+      appBar: MainAppBar(
+        title: context.translation.advertisements,
+        description: "${context.translation.discover} ${widget.section.description}",
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            ConsumerWidget(
+              cubit: serviceCubit,
+              onRetry: () {
+                serviceCubit.get(sectionId: widget.section.id);
+              },
+              childBuilder: (context, t) => ServiceChipList(
+                services: t,
+                onChange: (service) {
+                  selectedService = service;
+                  params = PostGetParams(
+                    slug: selectedService!.slug,
+                    first: 10,
+                    serviceId: selectedService!.serviceId,
+                  );
+                  setState(() {});
+                },
+              ),
+            ),
+            ConditionalBuilder(
+              builder: (context) => Flexible(
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    children: [
+                      4.height(),
+                      SearchTextField(
+                        onChanged: (v) {
+                          params.title = v.valOrNull;
+                          postCubit.get(params: params);
+                        },
+                      ),
+                      16.height(),
+                      ListViewPaginationWidget<Post>(
+                        paginationCubit: postCubit,
+                        shrinkWrap: true,
+                        scrollController: scrollController,
+                        scrollPhysics: NeverScrollableScrollPhysics(),
+                        params: params,
+                        itemBuilder: (data) {
+                          return Column(
+                            children: [
+                              PostCard(post: data),
+                              16.height(),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              condition: selectedService != null,
+              fallback: (context) => Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      context.translation.pleaseSelectCategory,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

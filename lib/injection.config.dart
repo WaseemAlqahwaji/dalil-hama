@@ -29,6 +29,16 @@ import 'package:dalil_hama/features/sections/data/source/sections_source.dart'
     as _i439;
 import 'package:dalil_hama/features/sections/domain/repository/sections_repo.dart'
     as _i365;
+import 'package:dalil_hama/features/sections/presentation/cubit/section_get_cubit.dart'
+    as _i348;
+import 'package:dalil_hama/features/services/data/repository/services_repository_impl.dart'
+    as _i512;
+import 'package:dalil_hama/features/services/data/source/services_source.dart'
+    as _i491;
+import 'package:dalil_hama/features/services/domain/repository/services_repository.dart'
+    as _i949;
+import 'package:dalil_hama/features/services/presentation/cubit/services_get_cubit.dart'
+    as _i120;
 import 'package:dalil_hama/injectable_module.dart' as _i1057;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
@@ -58,6 +68,9 @@ extension GetItInjectableX on _i174.GetIt {
       () =>
           _i378.PostRemoteSourceImpl(gh<_i996.Dio>(), gh<_i50.Configuration>()),
     );
+    gh.factory<_i491.ServicesSource>(
+      () => _i491.ServicesSourceImpl(gh<_i996.Dio>(), gh<_i50.Configuration>()),
+    );
     gh.singleton<_i747.FileManager>(
       () => _i747.FileManager(gh<_i50.Configuration>()),
     );
@@ -66,6 +79,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i714.PostRepository>(
       () => _i759.PostRepositoryImpl(gh<_i378.PostRemoteSource>()),
+    );
+    gh.lazySingleton<_i949.ServicesRepository>(
+      () => _i512.ServicesRepositoryImpl(gh<_i491.ServicesSource>()),
+    );
+    gh.factory<_i120.ServicesGetCubit>(
+      () => _i120.ServicesGetCubit(gh<_i949.ServicesRepository>()),
+    );
+    gh.factory<_i348.SectionGetCubit>(
+      () => _i348.SectionGetCubit(gh<_i365.SectionsRepo>()),
     );
     gh.factory<_i404.PostsGetCubit>(
       () => _i404.PostsGetCubit(gh<_i714.PostRepository>()),

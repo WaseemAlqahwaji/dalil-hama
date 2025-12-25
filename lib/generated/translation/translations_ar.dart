@@ -40,4 +40,10 @@ class TranslationsAr extends Translations {
 
   @override
   String get advertisements => 'الإعلانات';
+
+  @override
+  String get pleaseSelectCategory => 'رجاءاً اختر فئة';
+
+  @override
+  String get discover => 'تصفح';
 }

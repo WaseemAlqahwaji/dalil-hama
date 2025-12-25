@@ -159,6 +159,18 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'الإعلانات'**
   String get advertisements;
+
+  /// No description provided for @pleaseSelectCategory.
+  ///
+  /// In ar, this message translates to:
+  /// **'رجاءاً اختر فئة'**
+  String get pleaseSelectCategory;
+
+  /// No description provided for @discover.
+  ///
+  /// In ar, this message translates to:
+  /// **'تصفح'**
+  String get discover;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

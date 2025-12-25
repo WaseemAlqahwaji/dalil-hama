@@ -18,7 +18,9 @@ class SectionsRepoImpl extends SectionsRepo with ApiHandler {
   Future<Either<Failure, List<Section>>> getSections() {
     return request(() async {
       var res = await source.getSections();
-      return Right(res.data!.map((e) => e.toDomain()).toList());
+      return Right(
+        (res as List).map((e) => SectionModel.fromJson(e).toDomain()).toList(),
+      );
     });
   }
 }

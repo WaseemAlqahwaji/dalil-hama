@@ -7,14 +7,14 @@ part 'section_model.g.dart';
 class SectionModel {
   final String id;
   final String title;
-  final String imageUrl;
   final String description;
+  final String? imageUrl;
 
   const SectionModel({
     required this.id,
     required this.title,
-    required this.imageUrl,
     required this.description,
+    this.imageUrl,
   });
 
   factory SectionModel.fromJson(Map<String, dynamic> json) =>

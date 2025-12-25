@@ -105,9 +105,14 @@ class TextColors {
 }
 
 class ShapeColors {
-  Color backgroundColor, cardColor, navBar, secondaryButton;
+  Color backgroundColor,
+      cardColor,
+      navBar,
+      secondaryButton,
+      borderColor,
+      selectedChipColor,
+      unSelectedChipColor;
   IconColor iconColor;
-  Color borderColor;
 
   ShapeColors({
     required this.backgroundColor,
@@ -116,6 +121,8 @@ class ShapeColors {
     required this.navBar,
     required this.iconColor,
     required this.secondaryButton,
+    required this.selectedChipColor,
+    required this.unSelectedChipColor,
   });
 }
 

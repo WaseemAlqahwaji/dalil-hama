@@ -2,15 +2,16 @@
 
 // ignore_for_file: prefer_const_declarations
 
-part of 'section_model.dart';
+part of 'service_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-SectionModel _$SectionModelFromJson(Map json) => SectionModel(
+ServiceModel _$ServiceModelFromJson(Map json) => ServiceModel(
   id: json['id'] as String,
   title: json['title'] as String,
   description: json['description'] as String,
+  slug: json['slug'] as String,
   imageUrl: json['imageUrl'] as String?,
 );

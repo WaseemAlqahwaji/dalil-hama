@@ -1,13 +1,18 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/bloc_consumers/consumer_widget.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/main_app_bar.dart';
 import 'package:dalil_hama/features/search/presentation/page/search_page.dart';
+import 'package:dalil_hama/features/sections/presentation/cubit/section_get_cubit.dart';
 import 'package:dalil_hama/features/sections/presentation/widgets/section_widget.dart';
 import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
+import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   static final String path = "/HomePage";
+
   const HomePage({super.key});
 
   @override
@@ -15,25 +20,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final sectionCubit = getIt<SectionGetCubit>();
+
+  @override
+  void initState() {
+    sectionCubit.get();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.location_on),
-                Text(context.translation.dalilHama),
-              ],
-            ),
-            Text(
-              context.translation.selectSection,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ],
-        ),
+      // appBar: AppBar(
+      //   title: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       Row(
+      //         children: [
+      //           Icon(Icons.location_on),
+      //           Text(context.translation.dalilHama),
+      //         ],
+      //       ),
+      //       Text(
+      //         context.translation.selectSection,
+      //         style: Theme.of(context).textTheme.bodySmall,
+      //       ),
+      //     ],
+      //   ),
+      //   actions: [],
+      // ),
+      appBar: MainAppBar(
+        title: context.translation.dalilHama,
+        description: context.translation.selectSection,
+        icon: Icons.location_on,
         actions: [],
       ),
       body: Padding(
@@ -78,16 +97,21 @@ class _HomePageState extends State<HomePage> {
             //     children: [SectionWidget(), SectionWidget(), SectionWidget()],
             //   ),
             // ),
-            Flexible(
-              child: GridView.builder(
-                itemBuilder: (context, index) => SectionWidget(),
-                itemCount: 8,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisExtent: 160,
-                  mainAxisSpacing: 8,
+            Expanded(
+              child: ConsumerWidget(
+                cubit: sectionCubit,
+                childBuilder: (context, t) => GridView.builder(
+                  itemBuilder: (context, index) =>
+                      SectionWidget(section: t[index]),
+                  itemCount: t.length,
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 220,
+                    crossAxisSpacing: 8,
+                    mainAxisExtent: 160,
+                    mainAxisSpacing: 8,
+                  ),
                 ),
+                onRetry: sectionCubit.get,
               ),
             ),
           ],

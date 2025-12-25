@@ -1,7 +1,7 @@
-class Section{
-    final String id;
+class Section {
+  final String id;
   final String title;
-  final String imageUrl;
+  final String? imageUrl;
   final String description;
 
   const Section({

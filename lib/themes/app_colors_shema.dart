@@ -45,6 +45,8 @@ class MainColorSchema extends AppColorsSchema {
     navBar: darkJungleGreen,
     iconColor: IconColor(selected: white, unSelected: jetStream),
     secondaryButton: graniteGrey,
+    selectedChipColor: lightTeal,
+    unSelectedChipColor: darkJungleGreen,
   );
 
   @override

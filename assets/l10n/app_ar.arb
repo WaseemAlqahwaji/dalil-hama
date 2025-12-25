@@ -9,5 +9,7 @@
   "favourites" : "المفضلة",
   "searchForAnything" : "ابحث عن شيء دكتور، صيدلية، مطعم ...",
   "posts" : "المنشورات",
-  "advertisements" : "الإعلانات"
+  "advertisements" : "الإعلانات",
+  "pleaseSelectCategory" : "رجاءاً اختر فئة",
+  "discover" : "تصفح"
 }

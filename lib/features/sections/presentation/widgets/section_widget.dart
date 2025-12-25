@@ -1,9 +1,14 @@
 import 'package:core_package/core_package.dart';
+import 'package:dalil_hama/features/post/presentation/pages/posts_page_copy.dart';
+import 'package:dalil_hama/features/sections/domain/entity/section.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SectionWidget extends StatefulWidget {
-  const SectionWidget({super.key});
+  final Section section;
+
+  const SectionWidget({super.key, required this.section});
 
   @override
   State<SectionWidget> createState() => _SectionWidgetState();
@@ -12,8 +17,10 @@ class SectionWidget extends StatefulWidget {
 class _SectionWidgetState extends State<SectionWidget> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 160,
+    return InkWellWithoutFeedback(
+      onTap: () {
+        context.push(PostsPageCopy.path, extra: widget.section);
+      },
       child: Stack(
         children: [
           Container(
@@ -26,37 +33,44 @@ class _SectionWidgetState extends State<SectionWidget> {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).appSchema.shapeColor.navBar,
+                  ),
+                  child: Icon(Icons.wallet),
+                ),
+                8.width(),
                 Expanded(
-                  child: Row(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-
                     children: [
-                      Container(
-                        height: 32,
-                        width: 32,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).appSchema.shapeColor.navBar,
-                        ),
-                        child: Icon(Icons.wallet),
-                      ),
-                      8.width(),
                       Expanded(
                         child: Text(
-                          "القطاع الصحي والطبي",
+                          widget.section.title,
                           style: Theme.of(context).textTheme.titleMedium,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          widget.section.description,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 4,
                         ),
                       ),
                     ],
                   ),
                 ),
-                8.height(),
-                Expanded(child: Text("description")),
               ],
             ),
           ),

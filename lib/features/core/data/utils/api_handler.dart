@@ -41,7 +41,7 @@ mixin ApiHandler {
           ),
         );
       } else {
-        return left(NetworkFailure());
+        return left(InternalError());
       }
     } catch (e, stack) {
       _logger.e(e.toString(), error: e, stackTrace: stack);

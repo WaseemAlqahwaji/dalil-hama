@@ -2,7 +2,7 @@
 
 // ignore_for_file: prefer_const_declarations
 
-part of 'sections_source.dart';
+part of 'services_source.dart';
 
 // dart format off
 
@@ -12,8 +12,8 @@ part of 'sections_source.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main
 
-class _SectionsSourceImpl implements SectionsSourceImpl {
-  _SectionsSourceImpl(this._dio, {this.baseUrl, this.errorLogger});
+class _ServicesSourceImpl implements ServicesSourceImpl {
+  _ServicesSourceImpl(this._dio, {this.baseUrl, this.errorLogger});
 
   final Dio _dio;
 
@@ -22,7 +22,7 @@ class _SectionsSourceImpl implements SectionsSourceImpl {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> getSections() async {
+  Future<dynamic> getServices({required String sectionId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -31,7 +31,7 @@ class _SectionsSourceImpl implements SectionsSourceImpl {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'api/Sections',
+            'api/Sections/${sectionId}/services',
             queryParameters: queryParameters,
             data: _data,
           )
