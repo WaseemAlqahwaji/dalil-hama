@@ -11,5 +11,8 @@
   "posts" : "المنشورات",
   "advertisements" : "الإعلانات",
   "pleaseSelectCategory" : "رجاءاً اختر فئة",
-  "discover" : "تصفح"
+  "discover" : "تصفح",
+  "openInMap" : "فتح الخريطة",
+  "sendMail" : "ارسال بريد",
+  "call" : "اتصال"
 }
