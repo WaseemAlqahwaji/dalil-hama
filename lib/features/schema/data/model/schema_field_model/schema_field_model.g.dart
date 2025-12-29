@@ -30,4 +30,5 @@ const _$SchemaFieldTypeEnumMap = {
   SchemaFieldType.email: 'Email',
   SchemaFieldType.phoneNumber: 'PhoneNumber',
   SchemaFieldType.json: 'JSON',
+  SchemaFieldType.address: 'Address',
 };

@@ -5,6 +5,7 @@ part 'schema_field_model.g.dart';
 
 @JsonSerializable()
 class SchemaFieldModel {
+  @JsonKey(name: "presentation")
   final String? title;
   final SchemaFieldType fieldType;
   final String fieldName;

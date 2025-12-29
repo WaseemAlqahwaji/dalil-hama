@@ -27,7 +27,7 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                 children: [
                   16.height(),
                   ImageWidget(
-                    url: "fuck salem",
+                    url: widget.post.imageUrl,
                     borderRadius: BorderRadius.circular(16),
                     width: double.infinity,
                     height: 250,
@@ -56,6 +56,7 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                     separatorBuilder: (context, index) => 8.height(),
                     itemCount: widget.post.attributes.length,
                   ),
+                  16.height(),
                 ],
               ),
             ),

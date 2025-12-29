@@ -59,23 +59,23 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            InkWellWithoutFeedback(
-              onTap: () {
-                context.pushNamed(SearchPage.path);
-              },
-              child: TextFormField(
-                enabled: false,
-                onTap: () {},
-                decoration: InputDecoration(
-                  hint: Text(context.translation.searchForAnything),
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Assets.icons.search.svg(),
-                  ),
-                ),
-              ),
-            ),
-            24.height(),
+            // InkWellWithoutFeedback(
+            //   onTap: () {
+            //     context.pushNamed(SearchPage.path);
+            //   },
+            //   child: TextFormField(
+            //     enabled: false,
+            //     onTap: () {},
+            //     decoration: InputDecoration(
+            //       hint: Text(context.translation.searchForAnything),
+            //       prefixIcon: Padding(
+            //         padding: const EdgeInsets.all(16),
+            //         child: Assets.icons.search.svg(),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // 24.height(),
             Row(
               children: [
                 Assets.icons.sections.svg(),

@@ -1,4 +1,5 @@
 import 'package:core_package/core_package.dart';
+import 'package:dalil_hama/features/post/presentation/widget/post_button.dart';
 import 'package:dalil_hama/features/schema/domain/entity/schema_attribute.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class PostSchemeCard extends StatelessWidget {
                 ],
               ),
             ),
-            
+            PostButton(schemaAttribute: schemaAttribute)
           ],
         ),
       ),
