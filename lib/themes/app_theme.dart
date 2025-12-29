@@ -26,6 +26,7 @@ class AppTheme {
     ),
     scaffoldBackgroundColor: Colors.transparent,
     cardColor: _schema.shapeColor.cardColor,
+        
     brightness: _schema.brightness,
     inputDecorationTheme: InputDecorationTheme(
       disabledBorder: OutlineInputBorder(
@@ -143,7 +144,6 @@ class AppTheme {
         letterSpacing: 0.5,
         color: _schema.textColor.title,
       ),
-
     ),
     dividerColor: _schema.shapeColor.borderColor,
     appBarTheme: AppBarTheme(

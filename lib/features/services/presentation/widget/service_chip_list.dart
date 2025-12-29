@@ -42,7 +42,7 @@ class _ServiceChipListState extends State<ServiceChipList> {
                 setState(() {});
               }
             },
-
+ 
             selectedColor: Theme.of(
               context,
             ).appSchema.shapeColor.selectedChipColor,

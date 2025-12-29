@@ -3,6 +3,8 @@ import 'package:dalil_hama/features/core/presentation/page/settings_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/splash_page.dart';
 import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
 import 'package:dalil_hama/features/map/presentation/map_page.dart';
+import 'package:dalil_hama/features/post/domain/entity/post.dart';
+import 'package:dalil_hama/features/post/presentation/pages/post_details_page.dart';
 import 'package:dalil_hama/features/post/presentation/pages/post_favourite_page.dart';
 import 'package:dalil_hama/features/post/presentation/pages/posts_page.dart';
 import 'package:dalil_hama/features/post/presentation/pages/posts_page_copy.dart';
@@ -63,8 +65,13 @@ class Routes {
     ),
     RouteInfo(
       builder: (context, state, child) =>
-          PostsPageCopy(section: state.extra as Section,),
+          PostsPageCopy(section: state.extra as Section),
       path: PostsPageCopy.path,
+    ),
+    RouteInfo(
+      builder: (context, state, child) =>
+          PostDetailsPage(post: state.extra as Post),
+      path: PostDetailsPage.path,
     ),
   ];
 }
