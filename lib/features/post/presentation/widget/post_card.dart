@@ -33,7 +33,7 @@ class _PostCardState extends State<PostCard> {
                 url: widget.post.imageUrl,
                 placeHolder: Icon(Icons.image),
               ),
-              8.width(),
+              16.width(),
               Expanded(
                 child: Text(
                   widget.post.title,

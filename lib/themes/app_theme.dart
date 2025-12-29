@@ -67,19 +67,19 @@ class AppTheme {
         color: _schema.textColor.title,
       ),
       displaySmall: TextStyle(
-        fontSize: 36.0, // up from 36
+        fontSize: 20.0, // up from 36
         fontWeight: FontWeight.w400,
         letterSpacing: 0.0,
         color: _schema.textColor.description,
       ),
       headlineLarge: TextStyle(
-        fontSize: 32.0, // up from 32
+        fontSize: 16.0, // up from 32
         fontWeight: FontWeight.w400,
         letterSpacing: 0.0,
         color: _schema.textColor.title,
       ),
       headlineMedium: TextStyle(
-        fontSize: 28.0, // up from 28
+        fontSize: 15.0, // up from 28
         fontWeight: FontWeight.w400,
         letterSpacing: 0.0,
         color: _schema.textColor.title,

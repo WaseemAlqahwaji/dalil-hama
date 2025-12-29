@@ -1,8 +1,8 @@
-import 'package:dalil_hama/features/post/domain/entity/post_attribute.dart';
+import 'package:dalil_hama/features/schema/domain/entity/schema_attribute.dart';
 
 class Post {
   String title;
-  List<PostAttribute> attributes;
+  List<SchemaAttribute> attributes;
   String? imageUrl;
 
   Post({required this.title, this.attributes = const [], this.imageUrl});
