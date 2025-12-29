@@ -50,10 +50,10 @@ class _HomePageState extends State<HomePage> {
       //   actions: [],
       // ),
       appBar: MainAppBar(
-        title: context.translation.dalilHama,
+        titleText: context.translation.dalilHama,
         description: context.translation.selectSection,
-        icon: Icons.location_on,
-        actions: [],
+        icon: Icon(Icons.location_on),
+        // actions: [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

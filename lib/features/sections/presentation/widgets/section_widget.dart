@@ -1,5 +1,5 @@
 import 'package:core_package/core_package.dart';
-import 'package:dalil_hama/features/post/presentation/pages/posts_page_copy.dart';
+import 'package:dalil_hama/features/post/presentation/pages/posts_page.dart';
 import 'package:dalil_hama/features/sections/domain/entity/section.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class _SectionWidgetState extends State<SectionWidget> {
   Widget build(BuildContext context) {
     return InkWellWithoutFeedback(
       onTap: () {
-        context.push(PostsPageCopy.path, extra: widget.section);
+        context.push(PostsPage.path, extra: widget.section);
       },
       child: Stack(
         children: [

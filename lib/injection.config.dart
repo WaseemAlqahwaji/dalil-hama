@@ -23,6 +23,8 @@ import 'package:dalil_hama/features/post/domain/repository/post_repository.dart'
     as _i714;
 import 'package:dalil_hama/features/post/presentation/cubit/posts_get_cubit.dart'
     as _i404;
+import 'package:dalil_hama/features/schema/data/source/remote/schema_remote_source.dart'
+    as _i607;
 import 'package:dalil_hama/features/sections/data/repository/sections_repo_impl.dart'
     as _i343;
 import 'package:dalil_hama/features/sections/data/source/sections_source.dart'
@@ -61,6 +63,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i50.DevConfiguration(),
       registerFor: {_dev},
     );
+    gh.factory<_i607.SchemaRemoteSource>(
+      () => _i607.SchemaRemoteSourceImpl(
+        gh<_i996.Dio>(),
+        gh<_i50.Configuration>(),
+      ),
+    );
     gh.factory<_i439.SectionsSource>(
       () => _i439.SectionsSourceImpl(gh<_i996.Dio>(), gh<_i50.Configuration>()),
     );
@@ -74,11 +82,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i747.FileManager>(
       () => _i747.FileManager(gh<_i50.Configuration>()),
     );
+    gh.lazySingleton<_i714.PostRepository>(
+      () => _i759.PostRepositoryImpl(
+        gh<_i378.PostRemoteSource>(),
+        gh<_i607.SchemaRemoteSource>(),
+      ),
+    );
+    gh.factory<_i404.PostsGetCubit>(
+      () => _i404.PostsGetCubit(gh<_i714.PostRepository>()),
+    );
     gh.lazySingleton<_i365.SectionsRepo>(
       () => _i343.SectionsRepoImpl(gh<_i439.SectionsSource>()),
-    );
-    gh.factory<_i714.PostRepository>(
-      () => _i759.PostRepositoryImpl(gh<_i378.PostRemoteSource>()),
     );
     gh.lazySingleton<_i949.ServicesRepository>(
       () => _i512.ServicesRepositoryImpl(gh<_i491.ServicesSource>()),
@@ -88,9 +102,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i348.SectionGetCubit>(
       () => _i348.SectionGetCubit(gh<_i365.SectionsRepo>()),
-    );
-    gh.factory<_i404.PostsGetCubit>(
-      () => _i404.PostsGetCubit(gh<_i714.PostRepository>()),
     );
     return this;
   }

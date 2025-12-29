@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-enum PostAttributeType {
+enum SchemaFieldType {
   @JsonValue("Int")
   kInt,
   @JsonValue("String")
@@ -31,24 +31,4 @@ enum PostAttributeType {
   phoneNumber,
   @JsonValue("JSON")
   json,
-
-  // final int priority;
-
-  // const PostFieldType(this.priority);
 }
-
-// Int,
-// String,
-// DateTime,
-// Date,
-// Timespan,
-// Bool,
-// Float,
-// Enum,
-// Decimal,
-// Long,
-// Image,
-// File,
-// Email,
-// PhoneNumber,
-// JSON

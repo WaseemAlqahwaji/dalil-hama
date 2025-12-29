@@ -32,6 +32,7 @@ class PostGetParams extends BaseParams {
       }
       nodes {
         title
+        imageUrl
         createdAt
         payload
       }

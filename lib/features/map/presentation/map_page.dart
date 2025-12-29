@@ -35,6 +35,7 @@ class _MapPageState extends State<MapPage> {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
         margin: const EdgeInsets.only(bottom: 118, left: 8, right: 8, top: 8),
         child: MapClusterWidget(
+          // threshold: 10,
           mapClusterController: mapClusterController,
           clusterMarkerBuilder: (context, cl) {
             return MarkerData.fromWidget(
