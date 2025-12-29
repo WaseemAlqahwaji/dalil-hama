@@ -171,6 +171,24 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'تصفح'**
   String get discover;
+
+  /// No description provided for @openInMap.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح الخريطة'**
+  String get openInMap;
+
+  /// No description provided for @sendMail.
+  ///
+  /// In ar, this message translates to:
+  /// **'ارسال بريد'**
+  String get sendMail;
+
+  /// No description provided for @call.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتصال'**
+  String get call;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

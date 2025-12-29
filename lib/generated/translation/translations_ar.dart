@@ -46,4 +46,13 @@ class TranslationsAr extends Translations {
 
   @override
   String get discover => 'تصفح';
+
+  @override
+  String get openInMap => 'فتح الخريطة';
+
+  @override
+  String get sendMail => 'ارسال بريد';
+
+  @override
+  String get call => 'اتصال';
 }

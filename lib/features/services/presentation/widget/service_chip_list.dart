@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 class ServiceChipList extends StatefulWidget {
   final List<KService> services;
   final Function(KService service) onChange;
+  final KService? selected;
+
   const ServiceChipList({
     super.key,
     required this.services,
     required this.onChange,
+    this.selected,
   });
 
   @override
@@ -16,8 +19,6 @@ class ServiceChipList extends StatefulWidget {
 }
 
 class _ServiceChipListState extends State<ServiceChipList> {
-  KService? selectedService;
-
   @override
   void initState() {
     super.initState();
@@ -34,15 +35,14 @@ class _ServiceChipListState extends State<ServiceChipList> {
           return ChoiceChip(
             checkmarkColor: Theme.of(context).primaryColor,
             label: Text(service.title),
-            selected: selectedService == service,
+            selected: widget.selected?.id == service.id,
             onSelected: (selected) {
               if (selected) {
-                selectedService = service;
                 widget.onChange(service);
                 setState(() {});
               }
             },
- 
+
             selectedColor: Theme.of(
               context,
             ).appSchema.shapeColor.selectedChipColor,

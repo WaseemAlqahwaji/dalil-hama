@@ -1,5 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:core_package/core_package.dart';
+import 'package:core_package/generated/core_translation/core_translations.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/features/core/presentation/widgets/bloc_consumers/consumer_widget.dart';
@@ -54,67 +55,82 @@ class _PostsPageState extends State<PostsPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            ConsumerWidget(
-              cubit: serviceCubit,
-              onRetry: () {
-                serviceCubit.get(sectionId: widget.section.id);
-              },
-              childBuilder: (context, t) => ServiceChipList(
-                services: t,
-                onChange: (service) {
-                  selectedService = service;
-                  controller.clear();
-                  params = PostGetParams(
-                    slug: selectedService!.slug,
-                    first: 10,
-                    serviceId: selectedService!.serviceId,
-                  );
-                  setState(() {});
-                },
-              ),
-            ),
-            ConditionalBuilder(
-              builder: (context) => Flexible(
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: Column(
-                    children: [
-                      4.height(),
-                      SearchTextField(
-                        controller: controller,
-                        onChanged: (v) {
-                          params.title = v.valOrNull;
-                          postCubit.get(params: params);
-                        },
+        child: ConsumerWidget(
+          onDataReceived: (v) {
+            if (v.firstOrNull != null) {
+              selectedService = v.first;
+              controller.clear();
+              params = PostGetParams(
+                slug: selectedService!.slug,
+                first: 10,
+                serviceId: selectedService!.serviceId,
+              );
+              setState(() {});
+            }
+          },
+          cubit: serviceCubit,
+          onRetry: () {
+            serviceCubit.get(sectionId: widget.section.id);
+          },
+          childBuilder: (context, t) {
+            return Column(
+              children: [
+                ServiceChipList(
+                  services: t,
+                  selected: selectedService,
+                  onChange: (service) {
+                    selectedService = service;
+                    controller.clear();
+                    params = PostGetParams(
+                      slug: selectedService!.slug,
+                      first: 10,
+                      serviceId: selectedService!.serviceId,
+                    );
+                    setState(() {});
+                  },
+                ),
+                ConditionalBuilder(
+                  builder: (context) => Flexible(
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: Column(
+                        children: [
+                          4.height(),
+                          SearchTextField(
+                            controller: controller,
+                            onChanged: (v) {
+                              params.title = v.valOrNull;
+                              postCubit.get(params: params);
+                            },
+                          ),
+                          16.height(),
+                          PostListWidget(
+                            cubit: postCubit,
+                            shrinkWrap: true,
+                            scrollController: scrollController,
+                            scrollPhysics: NeverScrollableScrollPhysics(),
+                            params: params,
+                          ),
+                        ],
                       ),
-                      16.height(),
-                      PostListWidget(
-                        cubit: postCubit,
-                        shrinkWrap: true,
-                        scrollController: scrollController,
-                        scrollPhysics: NeverScrollableScrollPhysics(),
-                        params: params,
-                      ),
-                    ],
+                    ),
+                  ),
+                  condition: selectedService != null,
+                  fallback: (context) => Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          CoreTranslations.of(context)!.noData,
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              condition: selectedService != null,
-              fallback: (context) => Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      context.translation.pleaseSelectCategory,
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+              ],
+            );
+          },
         ),
       ),
     );

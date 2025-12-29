@@ -31,4 +31,6 @@ enum SchemaFieldType {
   phoneNumber,
   @JsonValue("JSON")
   json,
+  @JsonValue("Address")
+  address
 }
