@@ -2,6 +2,7 @@ import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/data/models/page_gpl_model/page_gql_model.dart';
 import 'package:dalil_hama/features/core/data/utils/api_handler.dart';
 import 'package:dalil_hama/features/post/data/model/post_model/post_model.dart';
+import 'package:dalil_hama/features/post/data/model/post_response_model/post_response_model.dart';
 import 'package:dalil_hama/features/post/data/source/remote_source/post_remote_source.dart';
 import 'package:dalil_hama/features/post/domain/entity/post.dart';
 import 'package:dalil_hama/features/post/domain/entity/post_list.dart';
@@ -24,14 +25,19 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
   @override
   Future<Either<Failure, PostList>> getPosts(PostGetParams params) {
     return request(() async {
-      final result = await source.getPosts(params.getGraphQlQuery());
-      await getShemaById(params.serviceId);
-      final pageInfoRaw = result['data']['posts']['pageInfo'];
-      List? data = result['data']['posts']['nodes'];
-      var postsModel = data?.map((e) => PostModel.fromJson(e)).toList() ?? [];
+      final rawResult = await source.getPosts(params.getGraphQlQuery());
+      final PostResponseModel response = PostResponseModel.fromJson(
+        rawResult['data']['posts'],
+      );
+      if (response.nodes.isEmpty) {
+        return Right(
+          PostList(post: [], pageInfo: response.pageInfo.toDomain()),
+        );
+      }
+      String serviceId = response.nodes.first.service;
+      await getShemaById(serviceId);
       List<Post> posts = [];
-      var pageInfo = PageGqlModel.fromJson(pageInfoRaw).toDomain();
-      for (var postModel in postsModel) {
+      for (var postModel in response.nodes) {
         List<SchemaAttribute> postAttributes = [];
         for (var key in postModel.payload.keys) {
           int i = schemaModel!.schema.indexWhere((e) => e.fieldName == key);
@@ -49,7 +55,9 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
         result.attributes = postAttributes;
         posts.add(result);
       }
-      return Right(PostList(pageInfo: pageInfo, post: posts));
+      return Right(
+        PostList(pageInfo: response.pageInfo.toDomain(), post: posts),
+      );
     });
   }
 
@@ -59,5 +67,21 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
     }
     final result = await schemaRemoteSource.getSchemaById(serviceId);
     schemaModel = result;
+  }
+
+  @override
+  Future<Either<Failure, PostList>> getPosts2(PostGetParams params) {
+    return request(() async {
+      final rawResult = await source.getPosts(params.getGraphQlQuery());
+      final PostResponseModel response = PostResponseModel.fromJson(
+        rawResult['data']['posts'],
+      );
+      return Right(
+        PostList(
+          pageInfo: response.pageInfo.toDomain(),
+          post: response.nodes.map((e) => e.toDomain()).toList(),
+        ),
+      );
+    });
   }
 }

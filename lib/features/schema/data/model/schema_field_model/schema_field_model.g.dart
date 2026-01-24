@@ -11,7 +11,7 @@ part of 'schema_field_model.dart';
 SchemaFieldModel _$SchemaFieldModelFromJson(Map json) => SchemaFieldModel(
   fieldType: $enumDecode(_$SchemaFieldTypeEnumMap, json['fieldType']),
   fieldName: json['fieldName'] as String,
-  title: json['title'] as String?,
+  title: json['presentation'] as String?,
 );
 
 const _$SchemaFieldTypeEnumMap = {

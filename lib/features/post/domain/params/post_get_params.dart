@@ -1,18 +1,19 @@
-import 'package:dalil_hama/features/core/domain/params/base_params.dart';
+import 'package:core_package/core_package.dart';
+import 'package:dalil_hama/features/post/domain/params/post_location_input.dart';
 
-class PostGetParams extends BaseParams {
+class PostGetParams extends PaginationParams {
   String? title;
-  String slug;
-  String serviceId;
+  String? slug;
   String? after;
   int? first;
+  PostLocationInput? locationInput;
 
   PostGetParams({
-    required this.slug,
-    required this.serviceId,
+     this.slug,
     this.title,
     this.after,
     this.first,
+    this.locationInput,
   });
 
   String getGraphQlQuery() {
@@ -20,9 +21,10 @@ class PostGetParams extends BaseParams {
         '''
     query {
       posts(
-      slug: "$slug"
+      ${slug != null ? {slug: "$slug"} : ""}
       ${first != null ? "first: $first" : ""}
       ${after != null ? "after: \"$after\"" : ""}
+      ${locationInput != null ? "locationInput: { longitude: ${locationInput!.longitude}, latitude: ${locationInput!.latitude}, radiusInM: ${locationInput!.radiusInM} }" : ""}
       ${title?.trim().isNotEmpty == true ? "where: { title: { contains: \"${title?.trim()}\" } }" : ""}
       )
      {
@@ -35,6 +37,13 @@ class PostGetParams extends BaseParams {
         imageUrl
         createdAt
         payload
+        location {
+        longitude,
+        latitude
+        }
+        service{
+        id
+        }
       }
       edges {
        cursor
@@ -43,6 +52,11 @@ class PostGetParams extends BaseParams {
 }
     ''';
     return q;
+  }
+
+  @override
+  void reset() {
+    after = null;
   }
 }
 

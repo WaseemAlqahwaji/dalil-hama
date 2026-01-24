@@ -55,4 +55,7 @@ class TranslationsAr extends Translations {
 
   @override
   String get call => 'اتصال';
+
+  @override
+  String get login => 'تسجيل الدخول';
 }

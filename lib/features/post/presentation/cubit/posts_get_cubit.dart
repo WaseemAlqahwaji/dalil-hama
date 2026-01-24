@@ -20,10 +20,10 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
       title: params.title,
       first: params.first,
       after: params.after,
-      serviceId: params.serviceId,
+      locationInput: params.locationInput,
     );
     emit(state.setInProgressState());
-    final result = await postRepository.getPosts(params);
+    final result = await postRepository.getPosts2(params);
     result.fold((l) => emit(state.setFailureState(l)), (r) {
       pageGpl = r.pageInfo;
       emit(
@@ -39,7 +39,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
   void paginate() async {
     params.after = pageGpl?.endCursor;
     emit(state.setPaginateInProgressState());
-    var res = await postRepository.getPosts(params);
+    var res = await postRepository.getPosts2(params);
     res.fold((e) => emit(state.setPaginateFailureState(e)), (r) {
       pageGpl = r.pageInfo;
       var items = [...state.items, ...r.post];

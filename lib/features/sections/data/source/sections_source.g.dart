@@ -22,9 +22,10 @@ class _SectionsSourceImpl implements SectionsSourceImpl {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> getSections() async {
+  Future<dynamic> getSections({required SectionGetParamsModel params}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(params.toJson());
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<dynamic>(

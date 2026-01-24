@@ -1,12 +1,13 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/configuration.dart';
+import 'package:dalil_hama/features/sections/data/model/section_get_params_model/section_get_params_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'sections_source.g.dart';
 
 abstract class SectionsSource {
-  Future getSections();
+  Future getSections({required SectionGetParamsModel params});
 }
 
 @RestApi()
@@ -19,5 +20,5 @@ abstract class SectionsSourceImpl extends SectionsSource {
 
   @GET("api/Sections")
   @override
-  Future getSections();
+  Future getSections({@Queries() required SectionGetParamsModel params});
 }

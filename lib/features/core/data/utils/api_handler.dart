@@ -37,7 +37,7 @@ mixin ApiHandler {
         return left(
           ServerFailure(
             code: e.response?.statusCode ?? -1,
-            message: errorBody['error'] ?? 'حدث خطأ',
+            message: errorBody['message'] ?? 'حدث خطأ',
           ),
         );
       } else {

@@ -2,16 +2,15 @@
 
 // ignore_for_file: prefer_const_declarations
 
-part of 'base_params_model.dart';
+part of 'section_get_params_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$BaseParamsModelToJson(BaseParamsModel instance) =>
-    <String, dynamic>{
-      'skip': ?instance.skip,
-      'limit': ?instance.limit,
-      'total': ?instance.total,
-      'search': ?instance.search,
-    };
+Map<String, dynamic> _$SectionGetParamsModelToJson(
+  SectionGetParamsModel instance,
+) => <String, dynamic>{
+  'parentId': ?instance.parentId,
+  'level': ?instance.level,
+};

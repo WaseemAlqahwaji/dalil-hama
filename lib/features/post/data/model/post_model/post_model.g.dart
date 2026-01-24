@@ -12,4 +12,10 @@ PostModel _$PostModelFromJson(Map json) => PostModel(
   title: json['title'] as String,
   payload: Map<String, dynamic>.from(json['payload'] as Map),
   imageUrl: json['imageUrl'] as String?,
+  location: json['location'] == null
+      ? null
+      : LocationModel.fromJson(
+          Map<String, dynamic>.from(json['location'] as Map),
+        ),
+  service: _fromJson(json['service']),
 );

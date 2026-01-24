@@ -189,6 +189,12 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'اتصال'**
   String get call;
+
+  /// No description provided for @login.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الدخول'**
+  String get login;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

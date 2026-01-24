@@ -13,4 +13,19 @@ SectionModel _$SectionModelFromJson(Map json) => SectionModel(
   title: json['title'] as String,
   description: json['description'] as String,
   imageUrl: json['imageUrl'] as String?,
+  type: $enumDecode(_$SectionTypeEnumMap, json['type']),
+  parentId: json['parentId'] as String?,
+  level: (json['level'] as num?)?.toInt(),
+  children:
+      (json['children'] as List<dynamic>?)
+          ?.map(
+            (e) => SectionModel.fromJson(Map<String, dynamic>.from(e as Map)),
+          )
+          .toList() ??
+      const [],
 );
+
+const _$SectionTypeEnumMap = {
+  SectionType.section: 'Section',
+  SectionType.service: 'Service',
+};

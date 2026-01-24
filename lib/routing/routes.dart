@@ -8,7 +8,6 @@ import 'package:dalil_hama/features/post/presentation/pages/post_details_page.da
 import 'package:dalil_hama/features/post/presentation/pages/post_favourite_page.dart';
 import 'package:dalil_hama/features/post/presentation/pages/posts_page.dart';
 import 'package:dalil_hama/features/search/presentation/page/search_page.dart';
-import 'package:dalil_hama/features/sections/domain/entity/section.dart';
 import 'package:dalil_hama/routing/route_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -58,7 +57,7 @@ class Routes {
     ),
     RouteInfo(
       builder: (context, state, child) =>
-          PostsPage(section: state.extra as Section),
+          PostsPage(slug: state.extra as String?),
       path: PostsPage.path,
     ),
 

@@ -21,7 +21,7 @@ class AppTheme {
     actionIconTheme: ActionIconThemeData(
       backButtonIconBuilder: (context) => CircleButton(
         padding: EdgeInsets.all(8),
-        icon: Assets.icons.back.dynamicSVGColor(context),
+        icon: Icon(Icons.arrow_back_ios_new),
       ),
     ),
     scaffoldBackgroundColor: Colors.transparent,

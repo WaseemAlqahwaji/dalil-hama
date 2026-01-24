@@ -1,4 +1,5 @@
 import 'package:dalil_hama/features/sections/domain/entity/section.dart';
+import 'package:dalil_hama/features/sections/domain/enum/section_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'section_model.g.dart';
@@ -9,12 +10,20 @@ class SectionModel {
   final String title;
   final String description;
   final String? imageUrl;
+  final SectionType type;
+  final String? parentId;
+  final int? level;
+  final List<SectionModel> children;
 
   const SectionModel({
     required this.id,
     required this.title,
     required this.description,
     this.imageUrl,
+    required this.type,
+    this.parentId,
+    this.level,
+    this.children = const [],
   });
 
   factory SectionModel.fromJson(Map<String, dynamic> json) =>
@@ -27,5 +36,9 @@ extension MapFromDomain on SectionModel {
     id: id,
     imageUrl: imageUrl,
     title: title,
+    type: type,
+    children: children.map((e) => e.toDomain()).toList(),
+    level: level,
+    parentId: parentId,
   );
 }

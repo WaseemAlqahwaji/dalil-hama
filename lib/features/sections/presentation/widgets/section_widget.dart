@@ -1,9 +1,7 @@
 import 'package:core_package/core_package.dart';
-import 'package:dalil_hama/features/post/presentation/pages/posts_page.dart';
 import 'package:dalil_hama/features/sections/domain/entity/section.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SectionWidget extends StatefulWidget {
   final Section section;
@@ -17,61 +15,50 @@ class SectionWidget extends StatefulWidget {
 class _SectionWidgetState extends State<SectionWidget> {
   @override
   Widget build(BuildContext context) {
-    return InkWellWithoutFeedback(
-      onTap: () {
-        context.push(PostsPage.path, extra: widget.section);
-      },
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          width: 4,
+          color: Theme.of(context).appSchema.shapeColor.borderColor,
+        ),
+      ),
+      clipBehavior: Clip.hardEdge,
       child: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                width: 4,
-                color: Theme.of(context).appSchema.shapeColor.borderColor,
-              ),
+          Positioned.fill(
+            child: ImageWidget(
+              coverColor: Colors.black.withValues(alpha: 0.6),
+              blendMode: BlendMode.darken,
+              placeHolder: Container(),
+              borderRadius: BorderRadius.circular(16),
+              url:
+                  widget.section.imageUrl,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 32,
-                  width: 32,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Theme.of(context).appSchema.shapeColor.navBar,
+          Positioned.fill(
+            child: Container(
+              padding: EdgeInsets.all(16),
+              alignment: AlignmentDirectional.bottomStart,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    widget.section.title,
+                    textAlign: TextAlign.start,
+                    style: Theme.of(context).textTheme.titleLarge,
+                    maxLines: 4,
                   ),
-                  child: Icon(Icons.wallet),
-                ),
-                8.width(),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          widget.section.title,
-                          style: Theme.of(context).textTheme.titleMedium,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Text(
-                          widget.section.description,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 4,
-                        ),
-                      ),
-                    ],
+                  4.height(),
+                  Text(
+                    widget.section.description,
+                    textAlign: TextAlign.start,
+                    style: Theme.of(context).textTheme.titleSmall,
+                    maxLines: 2,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],

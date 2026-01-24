@@ -7,7 +7,8 @@ abstract class Configuration {
 @Singleton(as: Configuration, env: ["dev"])
 class DevConfiguration extends Configuration {
   @override
-  String get getBaseUrl => "http://10.0.2.2:5001/";
+  String get getBaseUrl =>
+      "http://ec2-51-20-92-68.eu-north-1.compute.amazonaws.com:5001/";
 }
 
 class AppEnvironment {
