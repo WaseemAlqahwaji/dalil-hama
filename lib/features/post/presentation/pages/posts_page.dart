@@ -4,15 +4,17 @@ import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/features/core/presentation/widgets/main_app_bar.dart';
 import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
 import 'package:dalil_hama/features/post/presentation/cubit/posts_get_cubit.dart';
+import 'package:dalil_hama/features/post/presentation/pages/post_details_page.dart';
 import 'package:dalil_hama/features/post/presentation/widget/post_list_widget.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PostsPage extends StatefulWidget {
   static String path = "/PostsPage";
   final String? slug;
 
-  const PostsPage({super.key, this.slug});
+  const PostsPage({super.key,  this.slug});
 
   @override
   State<PostsPage> createState() => _PostsPageState();
@@ -26,7 +28,10 @@ class _PostsPageState extends State<PostsPage> {
 
   @override
   void initState() {
-    params = PostGetParams(slug: widget.slug);
+    params = PostGetParams(
+      postGetFilters: PostGetFilters(slug: widget.slug),
+      first: 10,
+    );
     super.initState();
   }
 
@@ -49,12 +54,18 @@ class _PostsPageState extends State<PostsPage> {
               SearchTextField(
                 controller: controller,
                 onChanged: (v) {
-                  params.title = v.valOrNull;
+                  params.postGetFilters?.title = v.valOrNull;
                   postCubit.get(params: params);
                 },
               ),
               16.height(),
               PostListWidget(
+                onTap: (v) {
+                  context.pushNamed(
+                    PostDetailsPage.path,
+                    pathParameters: {'slug': widget.slug ?? '', 'id': v},
+                  );
+                },
                 cubit: postCubit,
                 shrinkWrap: true,
                 scrollController: scrollController,

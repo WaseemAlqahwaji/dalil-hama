@@ -9,6 +9,7 @@ class Section {
   final int? level;
   final List<Section> children;
   final SectionType type;
+  final String? slug;
 
   const Section({
     required this.id,
@@ -19,5 +20,6 @@ class Section {
     this.level,
     required this.type,
     this.children = const [],
+    this.slug,
   });
 }

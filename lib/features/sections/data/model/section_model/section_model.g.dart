@@ -23,6 +23,7 @@ SectionModel _$SectionModelFromJson(Map json) => SectionModel(
           )
           .toList() ??
       const [],
+  slug: json['slug'] as String?,
 );
 
 const _$SectionTypeEnumMap = {

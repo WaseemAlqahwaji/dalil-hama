@@ -6,6 +6,7 @@ part 'post_model.g.dart';
 
 @JsonSerializable()
 class PostModel {
+  String id;
   String title;
   Map<String, dynamic> payload;
   final String? imageUrl;
@@ -19,6 +20,7 @@ class PostModel {
     this.imageUrl,
     this.location,
     required this.service,
+    required this.id,
   });
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>
@@ -33,5 +35,6 @@ extension MapToDomain on PostModel {
     imageUrl: imageUrl,
     serviceId: service,
     location: location?.toDomain(),
+    id: id,
   );
 }

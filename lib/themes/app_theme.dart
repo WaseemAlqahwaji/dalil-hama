@@ -1,6 +1,4 @@
 import 'package:core_package/core_package.dart';
-import 'package:dalil_hama/features/core/presentation/utils/ext/dynamic_svg_ext.dart';
-import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 import 'app_colors_shema.dart';

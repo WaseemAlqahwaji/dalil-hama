@@ -18,4 +18,5 @@ PostModel _$PostModelFromJson(Map json) => PostModel(
           Map<String, dynamic>.from(json['location'] as Map),
         ),
   service: _fromJson(json['service']),
+  id: json['id'] as String,
 );

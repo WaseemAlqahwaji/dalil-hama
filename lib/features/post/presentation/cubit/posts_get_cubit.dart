@@ -16,8 +16,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
   void get({PostGetParams? params}) async {
     pageGpl = null;
     this.params = PostGetParams(
-      slug: params!.slug,
-      title: params.title,
+      postGetFilters: params!.postGetFilters,
       first: params.first,
       after: params.after,
       locationInput: params.locationInput,

@@ -55,7 +55,6 @@ class _SectionListWidgetState extends State<SectionListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(selected);
     return PopScope(
       canPop: stack == 0,
       onPopInvokedWithResult: (a, b) async {
@@ -79,7 +78,7 @@ class _SectionListWidgetState extends State<SectionListWidget> {
                   // print(items[index].title);
                   // print(items[index].children);
                   if (items[index].children.isEmpty) {
-                    context.pushNamed(PostsPage.path);
+                    context.pushNamed(PostsPage.path , extra: items[index].slug);
                   } else {
                     front(items[index]);
                   }

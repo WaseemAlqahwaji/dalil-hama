@@ -2,6 +2,7 @@ import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/app.dart';
 import 'package:dalil_hama/configuration.dart';
 import 'package:dalil_hama/injection.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -15,6 +16,7 @@ void main() async {
       (await getApplicationDocumentsDirectory()).path,
     ),
   );
+  await DioCacheInterceptorStore.initializeStore();
   await configureInjection(AppEnvironment.dev);
   runApp(const App());
 }

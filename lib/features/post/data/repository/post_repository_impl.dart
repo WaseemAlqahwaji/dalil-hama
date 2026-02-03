@@ -8,6 +8,7 @@ import 'package:dalil_hama/features/post/domain/entity/post.dart';
 import 'package:dalil_hama/features/post/domain/entity/post_list.dart';
 import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
 import 'package:dalil_hama/features/post/domain/repository/post_repository.dart';
+import 'package:dalil_hama/features/schema/data/model/schema_field_model/schema_field_model.dart';
 import 'package:dalil_hama/features/schema/data/model/schema_model/schema_model.dart';
 import 'package:dalil_hama/features/schema/data/source/remote/schema_remote_source.dart';
 import 'package:dalil_hama/features/schema/domain/entity/schema_attribute.dart';
@@ -61,12 +62,9 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
     });
   }
 
-  Future<void> getShemaById(String serviceId) async {
-    if (serviceId == schemaModel?.serviceId) {
-      return;
-    }
+  Future<SchemaModel> getShemaById(String serviceId) async {
     final result = await schemaRemoteSource.getSchemaById(serviceId);
-    schemaModel = result;
+    return result;
   }
 
   @override
@@ -82,6 +80,28 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
           post: response.nodes.map((e) => e.toDomain()).toList(),
         ),
       );
+    });
+  }
+
+  @override
+  Future<Either<Failure, Post>> getPostsById(String slug, String postId) {
+    return request(() async {
+      var postModel = PostModel.fromJson(await source.getPostById(slug, postId));
+      var schema = await getShemaById(postModel.service);
+      Post post = postModel.toDomain();
+      List<SchemaFieldModel> attributes = schema.schema;
+      for (var e in attributes) {
+        if (postModel.payload[e.fieldName] != null) {
+          post.attributes.add(
+            SchemaAttribute(
+              type: e.fieldType,
+              title: e.title ?? e.fieldName,
+              value: postModel.payload[e.fieldName],
+            ),
+          );
+        }
+      }
+      return Right(post);
     });
   }
 }

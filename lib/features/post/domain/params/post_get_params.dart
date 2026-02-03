@@ -1,19 +1,36 @@
+
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/post/domain/params/post_location_input.dart';
 
-class PostGetParams extends PaginationParams {
-  String? title;
+class PostGetFilters {
   String? slug;
+  String? title;
+
+  PostGetFilters({this.slug, this.title});
+
+  String parse() {
+    String res =
+        '''
+    where: {
+${title != null ? "title: { contains: \"${title?.trim()}\" }" : ""}
+${slug != null ? "service: {slug: {eq: \"${slug?.trim()}\"}}" : ""}
+    }
+    ''';
+    return res;
+  }
+}
+
+class PostGetParams extends PaginationParams {
   String? after;
   int? first;
   PostLocationInput? locationInput;
+  PostGetFilters? postGetFilters;
 
   PostGetParams({
-     this.slug,
-    this.title,
     this.after,
     this.first,
     this.locationInput,
+    this.postGetFilters,
   });
 
   String getGraphQlQuery() {
@@ -21,11 +38,10 @@ class PostGetParams extends PaginationParams {
         '''
     query {
       posts(
-      ${slug != null ? {slug: "$slug"} : ""}
       ${first != null ? "first: $first" : ""}
       ${after != null ? "after: \"$after\"" : ""}
       ${locationInput != null ? "locationInput: { longitude: ${locationInput!.longitude}, latitude: ${locationInput!.latitude}, radiusInM: ${locationInput!.radiusInM} }" : ""}
-      ${title?.trim().isNotEmpty == true ? "where: { title: { contains: \"${title?.trim()}\" } }" : ""}
+      ${postGetFilters?.parse() != null ? postGetFilters!.parse() : ""}
       )
      {
       pageInfo {
@@ -33,6 +49,7 @@ class PostGetParams extends PaginationParams {
         endCursor
       }
       nodes {
+      id
         title
         imageUrl
         createdAt

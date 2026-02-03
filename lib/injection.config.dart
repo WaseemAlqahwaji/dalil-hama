@@ -21,6 +21,8 @@ import 'package:dalil_hama/features/post/data/source/remote_source/post_remote_s
     as _i378;
 import 'package:dalil_hama/features/post/domain/repository/post_repository.dart'
     as _i714;
+import 'package:dalil_hama/features/post/presentation/cubit/post_get_by_id_cubit.dart'
+    as _i67;
 import 'package:dalil_hama/features/post/presentation/cubit/posts_get_cubit.dart'
     as _i404;
 import 'package:dalil_hama/features/schema/data/source/remote/schema_remote_source.dart'
@@ -87,6 +89,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i378.PostRemoteSource>(),
         gh<_i607.SchemaRemoteSource>(),
       ),
+    );
+    gh.factory<_i67.PostGetByIdCubit>(
+      () => _i67.PostGetByIdCubit(gh<_i714.PostRepository>()),
     );
     gh.factory<_i404.PostsGetCubit>(
       () => _i404.PostsGetCubit(gh<_i714.PostRepository>()),

@@ -14,6 +14,7 @@ class SectionModel {
   final String? parentId;
   final int? level;
   final List<SectionModel> children;
+  final String? slug;
 
   const SectionModel({
     required this.id,
@@ -24,6 +25,7 @@ class SectionModel {
     this.parentId,
     this.level,
     this.children = const [],
+    this.slug,
   });
 
   factory SectionModel.fromJson(Map<String, dynamic> json) =>
@@ -40,5 +42,6 @@ extension MapFromDomain on SectionModel {
     children: children.map((e) => e.toDomain()).toList(),
     level: level,
     parentId: parentId,
+    slug: slug,
   );
 }

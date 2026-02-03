@@ -9,6 +9,8 @@ abstract class PostRemoteSource {
   Future getPosts(String query);
 
   Future getSchemaById(String serviceId);
+
+  Future getPostById(String slug, String post);
 }
 
 @RestApi()
@@ -26,4 +28,8 @@ abstract class PostRemoteSourceImpl extends PostRemoteSource {
   @GET("api/schemas/{id}")
   @override
   Future getSchemaById(@Path("id") String serviceId);
+
+  @GET("api/{slug}/{id}")
+  @override
+  Future<dynamic> getPostById(@Path() String slug, @Path("id") String post);
 }

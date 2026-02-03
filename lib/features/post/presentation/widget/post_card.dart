@@ -1,9 +1,7 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/post/domain/entity/post.dart';
-import 'package:dalil_hama/features/post/presentation/pages/post_details_page.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class PostCard extends StatefulWidget {
   final Post post;
@@ -17,31 +15,26 @@ class PostCard extends StatefulWidget {
 class _PostCardState extends State<PostCard> {
   @override
   Widget build(BuildContext context) {
-    return InkWellWithoutFeedback(
-      onTap: () {
-        context.pushNamed(PostDetailsPage.path, extra: widget.post);
-      },
-      child: CustomCardWidget(
-        borderColor: Theme.of(context).appSchema.shapeColor.borderColor,
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          child: Row(
-            children: [
-              ImageWidget(
-                radius: 62,
-                shape: BoxShape.circle,
-                url: widget.post.imageUrl,
-                placeHolder: Icon(Icons.image),
+    return CustomCardWidget(
+      borderColor: Theme.of(context).appSchema.shapeColor.borderColor,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          children: [
+            ImageWidget(
+              radius: 62,
+              shape: BoxShape.circle,
+              url: widget.post.imageUrl,
+              placeHolder: Icon(Icons.image),
+            ),
+            16.width(),
+            Expanded(
+              child: Text(
+                widget.post.title,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
-              16.width(),
-              Expanded(
-                child: Text(
-                  widget.post.title,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

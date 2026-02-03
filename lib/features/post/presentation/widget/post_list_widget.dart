@@ -12,6 +12,7 @@ class PostListWidget extends StatefulWidget {
   final ScrollController? scrollController;
   final ScrollPhysics? scrollPhysics;
   final bool shrinkWrap;
+  final ValueChanged<String> onTap;
 
   const PostListWidget({
     super.key,
@@ -20,6 +21,7 @@ class PostListWidget extends StatefulWidget {
     this.scrollController,
     this.scrollPhysics,
     this.shrinkWrap = false,
+    required this.onTap,
   });
 
   @override
@@ -44,11 +46,16 @@ class _PostListWidgetState extends State<PostListWidget> {
       shrinkWrap: widget.shrinkWrap,
       params: widget.params,
       itemBuilder: (data) {
-        return Column(
-          children: [
-            PostCard(post: data),
-            16.height(),
-          ],
+        return InkWellWithoutFeedback(
+          onTap: () {
+            widget.onTap(data.id);
+          },
+          child: Column(
+            children: [
+              PostCard(post: data),
+              16.height(),
+            ],
+          ),
         );
       },
     );
