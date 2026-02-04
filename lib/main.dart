@@ -9,11 +9,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Hive.initFlutter();
   HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: HydratedStorageDirectory(
-      (await getApplicationDocumentsDirectory()).path,
+    storageDirectory: HydratedStorageDirectory((await getApplicationDocumentsDirectory()).path,
     ),
   );
   await DioCacheInterceptorStore.initializeStore();

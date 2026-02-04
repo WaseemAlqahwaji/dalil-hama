@@ -1,3 +1,5 @@
+import 'package:dalil_hama/features/auth/presentation/page/auth_login_page.dart';
+import 'package:dalil_hama/features/auth/presentation/page/auth_register_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/core_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/settings_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/splash_page.dart';
@@ -59,7 +61,16 @@ class Routes {
           PostsPage(slug: state.extra as String?),
       path: PostsPage.path,
     ),
-
+    RouteInfo(
+      useRootNavigator: false,
+      builder: (context, state, child) => AuthLoginPage(),
+      path: AuthLoginPage.path,
+    ),
+    RouteInfo(
+      useRootNavigator: false,
+      builder: (context, state, child) => AuthRegisterPage(),
+      path: AuthRegisterPage.path,
+    ),
     RouteInfo(
       builder: (context, state, child) => PostDetailsPage(
         slug: state.pathParameters['slug']!,

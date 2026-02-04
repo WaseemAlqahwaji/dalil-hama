@@ -133,7 +133,7 @@ class _MapPageState extends State<MapPage> {
                     color: Theme.of(context).primaryColor,
                   ),
                   child: Text(
-                    cl.items.length.toString(),
+                    "cl.items.length.toString()",
                     style: TextStyle(fontSize: 22),
                   ),
                 ),

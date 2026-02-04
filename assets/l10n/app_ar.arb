@@ -15,6 +15,11 @@
   "openInMap" : "فتح الخريطة",
   "sendMail" : "ارسال بريد",
   "call" : "اتصال",
-  "login" : "تسجيل الدخول"
-
+  "login" : "تسجيل الدخول",
+  "email" : "البريد الالكتروني",
+  "password" : "كلمة السر",
+  "emailNotValid" : "البريد الالكتروني غير صالح",
+  "yourFirstOptionToKnowHamaOmAlfidaa" : "خيارك الأول لتعرف كل شيء عن حماة أم الفداء",
+  "dontHaveAnAccount" : "ليس لديك حساب؟",
+  "register" : "إنشاء حساب"
 }

@@ -58,4 +58,23 @@ class TranslationsAr extends Translations {
 
   @override
   String get login => 'تسجيل الدخول';
+
+  @override
+  String get email => 'البريد الالكتروني';
+
+  @override
+  String get password => 'كلمة السر';
+
+  @override
+  String get emailNotValid => 'البريد الالكتروني غير صالح';
+
+  @override
+  String get yourFirstOptionToKnowHamaOmAlfidaa =>
+      'خيارك الأول لتعرف كل شيء عن حماة أم الفداء';
+
+  @override
+  String get dontHaveAnAccount => 'ليس لديك حساب؟';
+
+  @override
+  String get register => 'إنشاء حساب';
 }

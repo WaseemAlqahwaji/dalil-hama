@@ -195,6 +195,42 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'تسجيل الدخول'**
   String get login;
+
+  /// No description provided for @email.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الالكتروني'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة السر'**
+  String get password;
+
+  /// No description provided for @emailNotValid.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الالكتروني غير صالح'**
+  String get emailNotValid;
+
+  /// No description provided for @yourFirstOptionToKnowHamaOmAlfidaa.
+  ///
+  /// In ar, this message translates to:
+  /// **'خيارك الأول لتعرف كل شيء عن حماة أم الفداء'**
+  String get yourFirstOptionToKnowHamaOmAlfidaa;
+
+  /// No description provided for @dontHaveAnAccount.
+  ///
+  /// In ar, this message translates to:
+  /// **'ليس لديك حساب؟'**
+  String get dontHaveAnAccount;
+
+  /// No description provided for @register.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء حساب'**
+  String get register;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

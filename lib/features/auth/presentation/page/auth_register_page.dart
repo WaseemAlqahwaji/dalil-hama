@@ -1,21 +1,19 @@
 import 'package:core_package/core_package.dart';
-import 'package:dalil_hama/features/auth/presentation/page/auth_register_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-class AuthLoginPage extends StatefulWidget {
-  static String path = "/AuthLoginPage";
+class AuthRegisterPage extends StatefulWidget {
+  static String path = "/AuthRegisterPage";
 
-  const AuthLoginPage({super.key});
+  const AuthRegisterPage({super.key});
 
   @override
-  State<AuthLoginPage> createState() => _AuthLoginPageState();
+  State<AuthRegisterPage> createState() => _AuthRegisterPageState();
 }
 
-class _AuthLoginPageState extends State<AuthLoginPage> {
+class _AuthRegisterPageState extends State<AuthRegisterPage> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
 
@@ -73,7 +71,13 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
 
                   16.height(),
                   PasswordInputField(passwordController: passwordController),
-
+                  // TextFormField(
+                  //   controller: passwordController,
+                  //   textAlign: TextAlign.end,
+                  //   decoration: InputDecoration(
+                  //     label: Text(context.translation.password),
+                  //   ),
+                  // ),
                   24.height(),
                   SizedBox(
                     width: double.infinity,
@@ -87,8 +91,6 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                       Text(context.translation.dontHaveAnAccount),
                       TextButton(
                         onPressed: () {
-                          context.push(AuthRegisterPage.path);
-
                         },
                         child: Text(context.translation.register),
                       ),
