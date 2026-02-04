@@ -40,6 +40,7 @@ class _AuthRegisterPageState extends State<AuthRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
+      appBar: AppBar(),
       bottomNavigationBar: SizedBox.shrink(),
       body: Container(
         constraints: const BoxConstraints.expand(),

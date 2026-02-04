@@ -253,8 +253,20 @@ abstract class Translations {
   /// No description provided for @fieldRequiredMessage.
   ///
   /// In ar, this message translates to:
-  /// **'الحقل مطلوب'**
+  /// **'هذا الحقل مطلوب'**
   String get fieldRequiredMessage;
+
+  /// No description provided for @forgetPassword.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسيت كلمة المرور'**
+  String get forgetPassword;
+
+  /// No description provided for @restore.
+  ///
+  /// In ar, this message translates to:
+  /// **'استعادة'**
+  String get restore;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

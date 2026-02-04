@@ -25,6 +25,8 @@
   "letsGoIntoTheDalil" : "هيا بنا ندخل إلى دليل حلاوة الجبن",
   "fullname" : "الاسم الكامل",
   "username" : "اسم المستخدم",
-  "fieldRequiredMessage" : "الحقل مطلوب"
+  "fieldRequiredMessage" : "هذا الحقل مطلوب",
+  "forgetPassword" : "نسيت كلمة المرور",
+  "restore" : "استعادة"
 
 }

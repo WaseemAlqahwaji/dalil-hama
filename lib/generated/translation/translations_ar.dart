@@ -88,5 +88,11 @@ class TranslationsAr extends Translations {
   String get username => 'اسم المستخدم';
 
   @override
-  String get fieldRequiredMessage => 'الحقل مطلوب';
+  String get fieldRequiredMessage => 'هذا الحقل مطلوب';
+
+  @override
+  String get forgetPassword => 'نسيت كلمة المرور';
+
+  @override
+  String get restore => 'استعادة';
 }

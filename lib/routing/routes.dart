@@ -1,5 +1,6 @@
 import 'package:dalil_hama/features/auth/presentation/page/auth_login_page.dart';
 import 'package:dalil_hama/features/auth/presentation/page/auth_register_page.dart';
+import 'package:dalil_hama/features/auth/presentation/page/auth_send_email_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/core_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/settings_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/splash_page.dart';
@@ -70,6 +71,11 @@ class Routes {
       useRootNavigator: false,
       builder: (context, state, child) => AuthRegisterPage(),
       path: AuthRegisterPage.path,
+    ),
+    RouteInfo(
+      useRootNavigator: false,
+      builder: (context, state, child) => AuthSendEmailPage(),
+      path: AuthSendEmailPage.path,
     ),
     RouteInfo(
       builder: (context, state, child) => PostDetailsPage(

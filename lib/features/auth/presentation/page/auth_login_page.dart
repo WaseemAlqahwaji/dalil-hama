@@ -1,5 +1,6 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/auth/presentation/page/auth_register_page.dart';
+import 'package:dalil_hama/features/auth/presentation/page/auth_send_email_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
@@ -81,6 +82,17 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                       onPressed: () {},
                       child: Text(context.translation.login),
                     ),
+                  ),
+                  Row(
+                    children: [
+                      Text(context.translation.forgetPassword),
+                      TextButton(
+                        onPressed: () {
+                          context.pushNamed(AuthSendEmailPage.path);
+                        },
+                        child: Text(context.translation.restore),
+                      ),
+                    ],
                   ),
                   Row(
                     children: [
