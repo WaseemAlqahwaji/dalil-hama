@@ -87,8 +87,7 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                       Text(context.translation.dontHaveAnAccount),
                       TextButton(
                         onPressed: () {
-                          context.push(AuthRegisterPage.path);
-
+                          context.pushNamed(AuthRegisterPage.path);
                         },
                         child: Text(context.translation.register),
                       ),

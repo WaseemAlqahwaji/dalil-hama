@@ -77,4 +77,16 @@ class TranslationsAr extends Translations {
 
   @override
   String get register => 'إنشاء حساب';
+
+  @override
+  String get letsGoIntoTheDalil => 'هيا بنا ندخل إلى دليل حلاوة الجبن';
+
+  @override
+  String get fullname => 'الاسم الكامل';
+
+  @override
+  String get username => 'اسم المستخدم';
+
+  @override
+  String get fieldRequiredMessage => 'الحقل مطلوب';
 }

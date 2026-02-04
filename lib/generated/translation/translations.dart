@@ -231,6 +231,30 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'إنشاء حساب'**
   String get register;
+
+  /// No description provided for @letsGoIntoTheDalil.
+  ///
+  /// In ar, this message translates to:
+  /// **'هيا بنا ندخل إلى دليل حلاوة الجبن'**
+  String get letsGoIntoTheDalil;
+
+  /// No description provided for @fullname.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم الكامل'**
+  String get fullname;
+
+  /// No description provided for @username.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المستخدم'**
+  String get username;
+
+  /// No description provided for @fieldRequiredMessage.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحقل مطلوب'**
+  String get fieldRequiredMessage;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

@@ -21,5 +21,10 @@
   "emailNotValid" : "البريد الالكتروني غير صالح",
   "yourFirstOptionToKnowHamaOmAlfidaa" : "خيارك الأول لتعرف كل شيء عن حماة أم الفداء",
   "dontHaveAnAccount" : "ليس لديك حساب؟",
-  "register" : "إنشاء حساب"
+  "register" : "إنشاء حساب",
+  "letsGoIntoTheDalil" : "هيا بنا ندخل إلى دليل حلاوة الجبن",
+  "fullname" : "الاسم الكامل",
+  "username" : "اسم المستخدم",
+  "fieldRequiredMessage" : "الحقل مطلوب"
+
 }

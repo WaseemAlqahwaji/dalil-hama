@@ -16,11 +16,15 @@ class AuthRegisterPage extends StatefulWidget {
 class _AuthRegisterPageState extends State<AuthRegisterPage> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late TextEditingController fullNameController;
+  late TextEditingController usernameController;
 
   @override
   void initState() {
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    fullNameController = TextEditingController();
+    usernameController = TextEditingController();
     super.initState();
   }
 
@@ -28,6 +32,8 @@ class _AuthRegisterPageState extends State<AuthRegisterPage> {
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    usernameController.dispose();
+    fullNameController.dispose();
     super.dispose();
   }
 
@@ -51,11 +57,36 @@ class _AuthRegisterPageState extends State<AuthRegisterPage> {
                   ),
                   12.height(),
                   Text(
-                    context.translation.yourFirstOptionToKnowHamaOmAlfidaa,
+                    context.translation.letsGoIntoTheDalil,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   48.height(),
+                  TextFormField(
+                    controller: fullNameController,
+                    decoration: InputDecoration(
+                      label: Text(context.translation.fullname),
+                    ),
+                    validator: MultiValidator([
+                      RequiredValidator(
+                        errorText: context.translation.fieldRequiredMessage,
+                      ),
+                    ]).call,
+                  ),
+                  16.height(),
+                  TextFormField(
+                    controller: usernameController,
+                    decoration: InputDecoration(
+                      label: Text(context.translation.username),
+                    ),
+                    validator: MultiValidator([
+                      RequiredValidator(
+                        errorText: context.translation.fieldRequiredMessage,
+                      ),
+                    ]).call,
+                  ),
+                  16.height(),
+
                   TextFormField(
                     controller: emailController,
                     textAlign: TextAlign.end,
@@ -70,32 +101,19 @@ class _AuthRegisterPageState extends State<AuthRegisterPage> {
                   ),
 
                   16.height(),
-                  PasswordInputField(passwordController: passwordController),
-                  // TextFormField(
-                  //   controller: passwordController,
-                  //   textAlign: TextAlign.end,
-                  //   decoration: InputDecoration(
-                  //     label: Text(context.translation.password),
-                  //   ),
-                  // ),
+                  PasswordInputField(
+                    passwordController: passwordController,
+                    hasConfirmPassword: true,
+                  ),
                   24.height(),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text(context.translation.login),
+                      child: Text(context.translation.register),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(context.translation.dontHaveAnAccount),
-                      TextButton(
-                        onPressed: () {
-                        },
-                        child: Text(context.translation.register),
-                      ),
-                    ],
-                  ),
+                  
                 ],
               ),
             ),
