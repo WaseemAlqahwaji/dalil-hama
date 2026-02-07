@@ -91,7 +91,7 @@ class TranslationsAr extends Translations {
   String get fieldRequiredMessage => 'هذا الحقل مطلوب';
 
   @override
-  String get forgetPassword => 'نسيت كلمة المرور';
+  String get forgetPassword => 'نسيت كلمة المرور؟';
 
   @override
   String get restore => 'استعادة';

@@ -259,7 +259,7 @@ abstract class Translations {
   /// No description provided for @forgetPassword.
   ///
   /// In ar, this message translates to:
-  /// **'نسيت كلمة المرور'**
+  /// **'نسيت كلمة المرور؟'**
   String get forgetPassword;
 
   /// No description provided for @restore.

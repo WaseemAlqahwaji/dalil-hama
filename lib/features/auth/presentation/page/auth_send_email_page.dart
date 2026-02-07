@@ -53,10 +53,11 @@ class _AuthSendEmailPageState extends State<AuthSendEmailPage> {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 48.height(),
-        
+
                 TextFormField(
                   controller: emailController,
                   textAlign: TextAlign.end,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     label: Text(context.translation.email),
                   ),
@@ -66,7 +67,7 @@ class _AuthSendEmailPageState extends State<AuthSendEmailPage> {
                     ).call(value);
                   },
                 ),
-        
+
                 24.height(),
                 SizedBox(
                   width: double.infinity,

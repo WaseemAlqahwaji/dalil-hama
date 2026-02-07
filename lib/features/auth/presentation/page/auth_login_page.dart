@@ -62,6 +62,7 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                   TextFormField(
                     controller: emailController,
                     textAlign: TextAlign.end,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       label: Text(context.translation.email),
                     ),

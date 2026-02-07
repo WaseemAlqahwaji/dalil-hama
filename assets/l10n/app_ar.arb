@@ -26,7 +26,6 @@
   "fullname" : "الاسم الكامل",
   "username" : "اسم المستخدم",
   "fieldRequiredMessage" : "هذا الحقل مطلوب",
-  "forgetPassword" : "نسيت كلمة المرور",
+  "forgetPassword" : "نسيت كلمة المرور؟",
   "restore" : "استعادة"
-
 }
