@@ -6,5 +6,5 @@ import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
 abstract class PostRepository {
   Future<Either<Failure, PostList>> getPosts(PostGetParams params);
   Future<Either<Failure, PostList>> getPosts2(PostGetParams params);
-  Future<Either<Failure, Post>> getPostsById(String slug, String postId);
+  Future<Either<Failure, Post>> getPostsById(String postId);
 }

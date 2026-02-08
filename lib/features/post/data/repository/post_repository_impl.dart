@@ -84,11 +84,20 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
   }
 
   @override
-  Future<Either<Failure, Post>> getPostsById(String slug, String postId) {
+  Future<Either<Failure, Post>> getPostsById(String postId) {
     return request(() async {
-      var postModel = PostModel.fromJson(await source.getPostById(slug, postId));
-      var schema = await getShemaById(postModel.service);
+      final rawResult = await source.getPosts(
+        PostGetParams(
+          first: 1,
+          postGetFilters: PostGetFilters(id: postId),
+        ).getGraphQlQuery(),
+      );
+      final PostResponseModel response = PostResponseModel.fromJson(
+        rawResult['data']['posts'],
+      );
+      var postModel = response.nodes.first;
       Post post = postModel.toDomain();
+      var schema = await getShemaById(post.serviceId);
       List<SchemaFieldModel> attributes = schema.schema;
       for (var e in attributes) {
         if (postModel.payload[e.fieldName] != null) {

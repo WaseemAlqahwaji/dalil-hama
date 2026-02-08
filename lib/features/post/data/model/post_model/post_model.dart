@@ -36,5 +36,6 @@ extension MapToDomain on PostModel {
     serviceId: service,
     location: location?.toDomain(),
     id: id,
+    attributes: []
   );
 }

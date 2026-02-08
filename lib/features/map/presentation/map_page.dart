@@ -133,7 +133,7 @@ class _MapPageState extends State<MapPage> {
                     color: Theme.of(context).primaryColor,
                   ),
                   child: Text(
-                    "cl.items.length.toString()",
+                    cl.items.length.toString(),
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
@@ -146,29 +146,3 @@ class _MapPageState extends State<MapPage> {
     );
   }
 }
-
-// class _A {
-//   final LatLng coord;
-//   final String name;
-//
-//   const _A(this.name, this.coord);
-// }
-//
-// final List<_A> hamaLocations = [
-//   _A('Hama City Center', LatLng(35.140888, 36.755199)),
-//   _A('Azm Palace', LatLng(35.133667, 36.752164)),
-//   // ~palace center :contentReference[oaicite:1]{index=1}
-//   _A('Abu\'l-Fida Mosque', LatLng(35.13953, 36.74905)),
-//   // mosque on Orontes :contentReference[oaicite:2]{index=2}
-//   _A('Norias of Hama', LatLng(35.13528, 36.75306)),
-//   // group water-wheels :contentReference[oaicite:3]{index=3}
-//   _A('Great Mosque of Hama', LatLng(35.133834, 36.740497)),
-//   // west of citadel :contentReference[oaicite:4]{index=4}
-//   _A('Nur al-Din Mosque', LatLng(35.1350, 36.7510)),
-//   // rough near city :contentReference[oaicite:5]{index=5}
-//   _A('Hama Castle (Qal‘at Ḩamāh)', LatLng(35.136272, 36.749507)),
-//   _A('Orontes River (generic point)', LatLng(35.136, 36.752)),
-//   _A('Hama Citadel (approx center)', LatLng(35.134, 36.749)),
-//   _A('Old City Souq Area', LatLng(35.1345, 36.748)),
-//   // approximate bazaar center
-// ];

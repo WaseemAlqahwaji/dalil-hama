@@ -1,7 +1,5 @@
-import 'package:dalil_hama/features/auth/presentation/page/auth_login_page.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatefulWidget {
   static String path = "/SplashPage";
@@ -16,9 +14,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((e){
-      context.go(AuthLoginPage.path);
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((e){
+    //   context.go(AuthLoginPage.path);
+    // });
   }
 
   @override

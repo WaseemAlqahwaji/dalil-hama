@@ -36,7 +36,6 @@ class _SectionListWidgetState extends State<SectionListWidget> {
     setState(() {});
     cubit.get(params: SectionGetParams(parentId: getSelected()?.id, level: 2));
     widget.canBack(selected.isNotEmpty);
-
   }
 
   void front(Section section) {
@@ -64,7 +63,7 @@ class _SectionListWidgetState extends State<SectionListWidget> {
         cubit: cubit,
         childBuilder: (context, items) {
           return GridView.builder(
-            padding: EdgeInsets.symmetric(vertical: 16),
+            padding: EdgeInsets.only(top: 16, bottom: 128),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               mainAxisExtent: 200,
@@ -78,7 +77,7 @@ class _SectionListWidgetState extends State<SectionListWidget> {
                   // print(items[index].title);
                   // print(items[index].children);
                   if (items[index].children.isEmpty) {
-                    context.pushNamed(PostsPage.path , extra: items[index].slug);
+                    context.pushNamed(PostsPage.path, extra: items[index].slug);
                   } else {
                     front(items[index]);
                   }

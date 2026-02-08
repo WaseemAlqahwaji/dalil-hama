@@ -1,4 +1,6 @@
+import 'package:dalil_hama/features/auth/domain/repository/auth_repository.dart';
 import 'package:dalil_hama/features/core/domain/entity/user_stream_signal.dart';
+import 'package:dalil_hama/features/user/data/model/user_model/user_model.dart';
 import 'package:dalil_hama/features/user/domain/user.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -28,30 +30,51 @@ class AuthState {
 
 @singleton
 class AuthCubit extends HydratedCubit<AuthState> {
-  AuthCubit() : super(AuthState());
+  AuthRepository authRepository;
 
-  // AuthRepository authRepository;
-  //
-  // AuthCubit(this.authRepository) : super(AuthState()) {
-  //   authRepository.authStatus.listen((event) {
-  //     emitAuthState(event);
-  //   });
-  // }
+  AuthCubit(this.authRepository) : super(AuthState()) {
+    authRepository.authStatus.listen((event) {
+      emitAuthState(event);
+    });
+  }
 
-  void emitAuthState(UserStreamSignal e) {}
+  void emitAuthState(UserStreamSignal e) {
+    if (e.user != null) {
+      emit(
+        AuthState(
+          withPush: e.withPush,
+          authState: AuthStateType.authenticated,
+          userData: e.user!,
+        ),
+      );
+    } else {
+      emit(AuthState(withPush: e.withPush, authState: AuthStateType.unAuth));
+    }
+  }
 
-  void init() {}
+  void init() {
+    print(state.authenticated);
+    emit(state);
+  }
 
   void setUser(User? user) {}
 
   @override
   AuthState? fromJson(Map<String, dynamic> json) {
-    return AuthState(authState: AuthStateType.fromString(json['state']));
+    return AuthState(
+      authState: AuthStateType.fromString(json['state']),
+      userData: json['user'] != null
+          ? UserModel.fromJson(json['user']).toDomain()
+          : null,
+    );
   }
 
   @override
   Map<String, dynamic>? toJson(AuthState state) {
-    return {"state": state.authState.getString()};
+    return {
+      "state": state.authState.getString(),
+      "user": state.userData?.fromDomain().toJson(),
+    };
   }
 }
 

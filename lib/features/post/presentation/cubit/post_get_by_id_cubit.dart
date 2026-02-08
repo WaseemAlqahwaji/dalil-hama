@@ -10,9 +10,9 @@ class PostGetByIdCubit extends Cubit<BaseState<Post>> {
 
   PostGetByIdCubit(this.postRepository) : super(BaseState());
 
-  void get(String slug, String id) async {
+  void get(String id) async {
     emit(state.setInProgressState());
-    var res = await postRepository.getPostsById(slug, id);
+    var res = await postRepository.getPostsById(id);
     res.fold(
       (e) => emit(state.setFailureState(e)),
       (r) => emit(state.setSuccessState(r)),

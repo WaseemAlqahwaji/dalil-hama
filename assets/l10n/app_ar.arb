@@ -27,5 +27,6 @@
   "username" : "اسم المستخدم",
   "fieldRequiredMessage" : "هذا الحقل مطلوب",
   "forgetPassword" : "نسيت كلمة المرور؟",
-  "restore" : "استعادة"
+  "restore" : "استعادة",
+  "username" : "اسم المستخدم"
 }

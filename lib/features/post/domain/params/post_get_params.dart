@@ -1,12 +1,12 @@
-
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/post/domain/params/post_location_input.dart';
 
 class PostGetFilters {
   String? slug;
   String? title;
+  String? id;
 
-  PostGetFilters({this.slug, this.title});
+  PostGetFilters({this.slug, this.title , this.id});
 
   String parse() {
     String res =
@@ -14,6 +14,7 @@ class PostGetFilters {
     where: {
 ${title != null ? "title: { contains: \"${title?.trim()}\" }" : ""}
 ${slug != null ? "service: {slug: {eq: \"${slug?.trim()}\"}}" : ""}
+${id != null ? "id:  {eq: \"${id?.trim()}\"}" : ""}
     }
     ''';
     return res;

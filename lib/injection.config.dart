@@ -11,8 +11,18 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:core_package/core_package.dart' as _i996;
 import 'package:dalil_hama/configuration.dart' as _i50;
+import 'package:dalil_hama/features/auth/data/repository/auth_repo_impl.dart'
+    as _i586;
+import 'package:dalil_hama/features/auth/data/source/auth_local_source/auth_local_source.dart'
+    as _i898;
+import 'package:dalil_hama/features/auth/data/source/remote/auth_remote_source.dart'
+    as _i968;
+import 'package:dalil_hama/features/auth/domain/repository/auth_repository.dart'
+    as _i146;
 import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart'
     as _i32;
+import 'package:dalil_hama/features/auth/presentation/cubit/auth_login_cubit.dart'
+    as _i576;
 import 'package:dalil_hama/features/core/presentation/utils/file_manager.dart'
     as _i747;
 import 'package:dalil_hama/features/post/data/repository/post_repository_impl.dart'
@@ -58,7 +68,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final injectableModule = _$InjectableModule();
-    gh.singleton<_i32.AuthCubit>(() => _i32.AuthCubit());
+    gh.factory<_i898.AuthLocalSource>(() => _i898.AuthLocalSource());
     gh.lazySingleton<_i996.Dio>(() => injectableModule.dioInstance);
     gh.lazySingleton<_i974.Logger>(() => injectableModule.logger);
     gh.singleton<_i50.Configuration>(
@@ -73,6 +83,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i439.SectionsSource>(
       () => _i439.SectionsSourceImpl(gh<_i996.Dio>(), gh<_i50.Configuration>()),
+    );
+    gh.factory<_i968.AuthRemoteSource>(
+      () =>
+          _i968.AuthRemoteSourceImpl(gh<_i996.Dio>(), gh<_i50.Configuration>()),
     );
     gh.factory<_i378.PostRemoteSource>(
       () =>
@@ -90,6 +104,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i607.SchemaRemoteSource>(),
       ),
     );
+    gh.singleton<_i146.AuthRepository>(
+      () => _i586.AuthRepoImpl(
+        gh<_i968.AuthRemoteSource>(),
+        gh<_i898.AuthLocalSource>(),
+      ),
+    );
     gh.factory<_i67.PostGetByIdCubit>(
       () => _i67.PostGetByIdCubit(gh<_i714.PostRepository>()),
     );
@@ -98,6 +118,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i365.SectionsRepo>(
       () => _i343.SectionsRepoImpl(gh<_i439.SectionsSource>()),
+    );
+    gh.singleton<_i32.AuthCubit>(
+      () => _i32.AuthCubit(gh<_i146.AuthRepository>()),
+    );
+    gh.factory<_i576.AuthLoginCubit>(
+      () => _i576.AuthLoginCubit(gh<_i146.AuthRepository>()),
     );
     gh.lazySingleton<_i949.ServicesRepository>(
       () => _i512.ServicesRepositoryImpl(gh<_i491.ServicesSource>()),

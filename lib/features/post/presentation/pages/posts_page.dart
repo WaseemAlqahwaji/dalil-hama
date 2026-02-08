@@ -63,7 +63,7 @@ class _PostsPageState extends State<PostsPage> {
                 onTap: (v) {
                   context.pushNamed(
                     PostDetailsPage.path,
-                    pathParameters: {'slug': widget.slug ?? '', 'id': v},
+                    pathParameters: { 'id': v},
                   );
                 },
                 cubit: postCubit,

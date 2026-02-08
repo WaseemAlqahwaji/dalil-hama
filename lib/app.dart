@@ -1,9 +1,14 @@
 import 'package:core_package/generated/core_translation/core_translations.dart';
+import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:dalil_hama/features/auth/presentation/page/auth_login_page.dart';
+import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
+import 'package:dalil_hama/injection.dart';
 import 'package:dalil_hama/routing/observer_utils.dart';
 import 'package:dalil_hama/routing/route_info.dart';
 import 'package:dalil_hama/routing/routes.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'features/core/presentation/page/splash_page.dart';
@@ -19,8 +24,13 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((TIMESTAMP) {
+      authCubit.init();
+    });
     super.initState();
   }
+
+  final authCubit = getIt<AuthCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +53,30 @@ class _AppState extends State<App> {
             if (child == null) {
               return const SizedBox.shrink();
             }
-            return GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                FocusManager.instance.primaryFocus?.unfocus();
-              },
-              child: MediaQuery(
-                data: MediaQuery.of(
-                  context,
-                ).copyWith(textScaler: TextScaler.linear(0.9)),
-                child: child,
+            return MultiBlocListener(
+              listeners: [
+                BlocListener<AuthCubit, AuthState>(
+                  bloc: authCubit,
+                  listener: (context, state) {
+                    if (state.authenticated) {
+                      goRouterConfig.go(HomePage.path);
+                    } else {
+                      goRouterConfig.go(AuthLoginPage.path);
+                    }
+                  },
+                ),
+              ],
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
+                child: MediaQuery(
+                  data: MediaQuery.of(
+                    context,
+                  ).copyWith(textScaler: TextScaler.linear(0.9)),
+                  child: child,
+                ),
               ),
             );
           },

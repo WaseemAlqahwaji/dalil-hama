@@ -79,7 +79,6 @@ class Routes {
     ),
     RouteInfo(
       builder: (context, state, child) => PostDetailsPage(
-        slug: state.pathParameters['slug']!,
         id: state.pathParameters['id']!,
       ),
       path: PostDetailsPage.path,
