@@ -8,6 +8,7 @@ class PostGetFilters {
 
   PostGetFilters({this.slug, this.title , this.id});
 
+
   String parse() {
     String res =
         '''
@@ -62,6 +63,8 @@ class PostGetParams extends PaginationParams {
         service{
         id
         }
+        ratingCount
+        ratingAvg
       }
       edges {
        cursor
@@ -78,23 +81,3 @@ class PostGetParams extends PaginationParams {
   }
 }
 
-// query {
-// posts(
-// slug: "restaurants"
-// after: "OQ=="
-// where: { title: { contains: "" } }
-// ) {
-// pageInfo {
-// hasNextPage
-// endCursor
-// }
-// nodes {
-// title
-// createdAt
-// payload
-// }
-// edges {
-// cursor
-// }
-// }
-// }

@@ -42,4 +42,12 @@ class AuthRepoImpl extends AuthRepository with ApiHandler {
 
   @override
   Stream<UserStreamSignal> get authStatus => streamController.stream;
+
+  @override
+  Future<Either<Failure, void>> resetPassword(String email) {
+    return request(() async {
+      await source.resetPassword(email);
+      return Right(null);
+    });
+  }
 }

@@ -19,4 +19,6 @@ PostModel _$PostModelFromJson(Map json) => PostModel(
         ),
   service: _fromJson(json['service']),
   id: json['id'] as String,
+  ratingAvg: (json['ratingAvg'] as num?)?.toDouble() ?? 0,
+  ratingCount: (json['ratingCount'] as num?)?.toDouble() ?? 0,
 );

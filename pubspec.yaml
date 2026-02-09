@@ -27,6 +27,7 @@ dependencies:
   photo_view: ^0.15.0
   conditional_builder_null_safety: ^0.0.6
   google_maps_flutter: ^2.13.1
+  flutter_rating: ^2.0.2
   platform_identity:
     git: https://github.com/SalemZakkar/platform_identity.git
   core_package:

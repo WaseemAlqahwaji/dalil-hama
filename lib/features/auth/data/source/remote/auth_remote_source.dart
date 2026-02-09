@@ -8,6 +8,8 @@ part 'auth_remote_source.g.dart';
 
 abstract class AuthRemoteSource {
   Future login(AuthLoginModel params);
+
+  Future resetPassword(String email);
   // Future logout(AuthLoginModel params);
 }
 
@@ -22,4 +24,8 @@ abstract class AuthRemoteSourceImpl extends AuthRemoteSource {
   @POST("api/auth/login")
   @override
   Future<dynamic> login(@Body() AuthLoginModel params);
+
+  @POST("/api/auth/request-password-reset")
+  @override
+  Future<dynamic> resetPassword(@Query("email") String email);
 }

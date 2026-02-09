@@ -1,6 +1,5 @@
 import 'package:core_package/generated/core_translation/core_translations.dart';
 import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:dalil_hama/features/auth/presentation/page/auth_login_page.dart';
 import 'package:dalil_hama/features/home/presentation/page/home_page.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:dalil_hama/routing/observer_utils.dart';
@@ -24,7 +23,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((TIMESTAMP) {
+    WidgetsBinding.instance.addPostFrameCallback((t) {
       authCubit.init();
     });
     super.initState();
@@ -57,12 +56,9 @@ class _AppState extends State<App> {
               listeners: [
                 BlocListener<AuthCubit, AuthState>(
                   bloc: authCubit,
+                  listenWhen: (v1, v2) => v1.authState != v2.authState,
                   listener: (context, state) {
-                    if (state.authenticated) {
                       goRouterConfig.go(HomePage.path);
-                    } else {
-                      goRouterConfig.go(AuthLoginPage.path);
-                    }
                   },
                 ),
               ],

@@ -5,6 +5,16 @@ import 'package:dalil_hama/features/post/domain/params/post_get_params.dart';
 
 abstract class PostRepository {
   Future<Either<Failure, PostList>> getPosts(PostGetParams params);
+
   Future<Either<Failure, PostList>> getPosts2(PostGetParams params);
+
   Future<Either<Failure, Post>> getPostsById(String postId);
+
+  Future<Either<Failure, void>> rate(String postId, double value);
+
+  Future<Either<Failure, void>> unRate(String postId);
+
+  Stream<void> get refreshStream;
+
+  Stream<Post> get postRefreshed;
 }

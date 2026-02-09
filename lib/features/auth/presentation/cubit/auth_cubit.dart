@@ -53,7 +53,6 @@ class AuthCubit extends HydratedCubit<AuthState> {
   }
 
   void init() {
-    print(state.authenticated);
     emit(state);
   }
 

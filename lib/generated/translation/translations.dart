@@ -267,6 +267,36 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'استعادة'**
   String get restore;
+
+  /// No description provided for @name.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإسم'**
+  String get name;
+
+  /// No description provided for @logOut.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج'**
+  String get logOut;
+
+  /// No description provided for @pleaseLoginFirst.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى تسجيل الدخول أولاً'**
+  String get pleaseLoginFirst;
+
+  /// No description provided for @ratings.
+  ///
+  /// In ar, this message translates to:
+  /// **'التقييمات'**
+  String get ratings;
+
+  /// No description provided for @weSendResetPasswordLinkToYourEmail.
+  ///
+  /// In ar, this message translates to:
+  /// **'لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك'**
+  String get weSendResetPasswordLinkToYourEmail;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

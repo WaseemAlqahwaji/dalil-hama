@@ -1,3 +1,4 @@
+import 'package:dalil_hama/features/user/presentation/widget/user_profile_card.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -15,11 +16,12 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         constraints: const BoxConstraints.expand(),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //
+              UserProfileCard()
             ],
           ),
         ),

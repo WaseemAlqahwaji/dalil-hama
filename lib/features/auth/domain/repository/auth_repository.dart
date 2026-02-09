@@ -7,4 +7,7 @@ abstract class AuthRepository {
   Future<void> logout();
 
   Stream<UserStreamSignal> get authStatus;
+
+  Future<Either<Failure , void>> resetPassword(String email);
+
 }

@@ -1,5 +1,6 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/auth/data/source/auth_local_source/auth_local_source.dart';
+import 'package:dalil_hama/features/auth/domain/repository/auth_repository.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,6 +19,15 @@ class TokenInterceptor extends Interceptor {
     }
 
     return handler.next(options);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    if (err.response?.statusCode == 401 &&
+        await getIt<AuthLocalSource>().getToken() != null) {
+      getIt<AuthRepository>().logout();
+    }
+    super.onError(err, handler);
   }
 
   FormData copyFormData(FormData original) {

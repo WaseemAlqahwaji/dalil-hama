@@ -1,5 +1,6 @@
 import 'package:core_package/core_package.dart';
 import 'package:core_package/generated/core_translation/core_translations.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/dialogs/message_dialog.dart';
 import 'package:flutter/material.dart';
 
 import 'loading_dialog.dart';
@@ -30,7 +31,12 @@ class PopUps {
 
   Future<void> showSuccessDialog({String? message}) async {
     onShow?.call();
-
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return MessageDialog(message: message,);
+      },
+    );
     onAccept?.call();
   }
 

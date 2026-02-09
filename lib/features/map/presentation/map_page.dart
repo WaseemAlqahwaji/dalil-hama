@@ -7,6 +7,7 @@ import 'package:dalil_hama/features/post/presentation/cubit/posts_get_cubit.dart
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class MapPage extends StatefulWidget {
   static String path = "/MapPage";
@@ -101,6 +102,9 @@ class _MapPageState extends State<MapPage> {
             },
             mapClusterController: mapClusterController,
             initialLocation: pos,
+            onItemTap: (v) {
+              context.push("/PostDetailsPage/${v.id}");
+            },
             normalMarkerBuilder: (context, post) {
               return MarkerData.fromWidget(
                 child: Container(

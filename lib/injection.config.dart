@@ -23,6 +23,10 @@ import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart'
     as _i32;
 import 'package:dalil_hama/features/auth/presentation/cubit/auth_login_cubit.dart'
     as _i576;
+import 'package:dalil_hama/features/auth/presentation/cubit/auth_reset_password_cubit.dart'
+    as _i496;
+import 'package:dalil_hama/features/core/data/utils/token_interceptor.dart'
+    as _i595;
 import 'package:dalil_hama/features/core/presentation/utils/file_manager.dart'
     as _i747;
 import 'package:dalil_hama/features/post/data/repository/post_repository_impl.dart'
@@ -69,6 +73,7 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final injectableModule = _$InjectableModule();
     gh.factory<_i898.AuthLocalSource>(() => _i898.AuthLocalSource());
+    gh.lazySingleton<_i595.TokenInterceptor>(() => _i595.TokenInterceptor());
     gh.lazySingleton<_i996.Dio>(() => injectableModule.dioInstance);
     gh.lazySingleton<_i974.Logger>(() => injectableModule.logger);
     gh.singleton<_i50.Configuration>(
@@ -124,6 +129,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i576.AuthLoginCubit>(
       () => _i576.AuthLoginCubit(gh<_i146.AuthRepository>()),
+    );
+    gh.factory<_i496.AuthResetPasswordCubit>(
+      () => _i496.AuthResetPasswordCubit(gh<_i146.AuthRepository>()),
     );
     gh.lazySingleton<_i949.ServicesRepository>(
       () => _i512.ServicesRepositoryImpl(gh<_i491.ServicesSource>()),

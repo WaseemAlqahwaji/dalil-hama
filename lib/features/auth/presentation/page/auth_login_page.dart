@@ -46,6 +46,7 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
+      appBar: AppBar(),
       bottomNavigationBar: SizedBox.shrink(),
       body: ScreenLoader(
         cubit: cubit,

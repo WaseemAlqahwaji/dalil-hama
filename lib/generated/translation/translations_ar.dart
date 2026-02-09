@@ -95,4 +95,20 @@ class TranslationsAr extends Translations {
 
   @override
   String get restore => 'استعادة';
+
+  @override
+  String get name => 'الإسم';
+
+  @override
+  String get logOut => 'تسجيل الخروج';
+
+  @override
+  String get pleaseLoginFirst => 'يرجى تسجيل الدخول أولاً';
+
+  @override
+  String get ratings => 'التقييمات';
+
+  @override
+  String get weSendResetPasswordLinkToYourEmail =>
+      'لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك';
 }

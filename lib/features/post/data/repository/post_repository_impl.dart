@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/data/models/page_gpl_model/page_gql_model.dart';
 import 'package:dalil_hama/features/core/data/utils/api_handler.dart';
@@ -22,6 +24,9 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
   SchemaModel? schemaModel;
 
   PostRepositoryImpl(this.source, this.schemaRemoteSource);
+
+  StreamController<void> refreshController = StreamController.broadcast();
+  StreamController<Post> postRefreshedController = StreamController.broadcast();
 
   @override
   Future<Either<Failure, PostList>> getPosts(PostGetParams params) {
@@ -110,7 +115,33 @@ class PostRepositoryImpl extends PostRepository with ApiHandler {
           );
         }
       }
+      postRefreshedController.add(post);
       return Right(post);
     });
   }
+
+  @override
+  Future<Either<Failure, void>> rate(String postId, double value) {
+    return request(() async {
+      await source.rate(postId, value.toStringAsFixed(0));
+
+      refreshController.add(null);
+      return Right(null);
+    });
+  }
+
+  @override
+  Stream<void> get refreshStream => refreshController.stream;
+
+  @override
+  Future<Either<Failure, void>> unRate(String postId) {
+    return request(() async {
+      await source.unRate(postId);
+      refreshController.add(null);
+      return Right(null);
+    });
+  }
+
+  @override
+  Stream<Post> get postRefreshed => postRefreshedController.stream;
 }

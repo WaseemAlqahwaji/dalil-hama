@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/domain/entity/page_gpl.dart';
 import 'package:dalil_hama/features/post/domain/entity/post.dart';
@@ -7,10 +9,20 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
-  PostsGetCubit(this.postRepository) : super(BasePaginatedListState());
+  PostsGetCubit(this.postRepository) : super(BasePaginatedListState()) {
+    streamSubscription = postRepository.postRefreshed.listen((v) {
+      if (state.items.contains(v)) {
+        state.items[state.items.indexOf(v)] = v;
+        emit(state);
+      }
+    });
+  }
+
   PostRepository postRepository;
   PageGpl? pageGpl;
   late PostGetParams params;
+
+  StreamSubscription? streamSubscription;
 
   @override
   void get({PostGetParams? params}) async {

@@ -11,6 +11,10 @@ abstract class PostRemoteSource {
   Future getSchemaById(String serviceId);
 
   Future getPostById(String slug, String post);
+
+  Future rate(String postId, String value);
+
+  Future unRate(String postId);
 }
 
 @RestApi()
@@ -32,4 +36,12 @@ abstract class PostRemoteSourceImpl extends PostRemoteSource {
   @GET("api/{slug}/{id}")
   @override
   Future<dynamic> getPostById(@Path() String slug, @Path("id") String post);
+
+  @POST("api/posts/{postId}/rating")
+  @override
+  Future<dynamic> rate(@Path() String postId, @Field() String value);
+
+  @DELETE("api/posts/{postId}/rating")
+  @override
+  Future<dynamic> unRate(@Path() String postId);
 }

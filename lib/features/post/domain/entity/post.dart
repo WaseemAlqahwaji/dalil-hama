@@ -8,6 +8,8 @@ class Post {
   String? imageUrl;
   Location? location;
   String serviceId;
+  double ratingAvg;
+  double ratingCount;
 
   Post({
     required this.title,
@@ -16,14 +18,25 @@ class Post {
     this.location,
     required this.serviceId,
     required this.id,
+    this.ratingAvg = 0,
+    this.ratingCount = 0,
   });
 
   @override
   bool operator ==(Object other) {
-    return other is Post &&
-        other.id == id;
+    return other is Post && other.id == id;
   }
 
   @override
   int get hashCode => id.hashCode;
+
+  Post clone() => Post(
+    title: title,
+    serviceId: serviceId,
+    id: id,
+    attributes: attributes,
+    imageUrl: imageUrl,
+    location: location,
+    ratingAvg: ratingAvg,
+  );
 }

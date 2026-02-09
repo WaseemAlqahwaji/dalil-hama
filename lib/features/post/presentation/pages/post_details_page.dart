@@ -1,7 +1,13 @@
 import 'package:core_package/core_package.dart';
+import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
+import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/dialogs/dialog_util.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/dialogs/login_first_dialog.dart';
 import 'package:dalil_hama/features/post/domain/entity/post.dart';
+import 'package:dalil_hama/features/post/domain/repository/post_repository.dart';
 import 'package:dalil_hama/features/post/presentation/cubit/post_get_by_id_cubit.dart';
+import 'package:dalil_hama/features/post/presentation/widget/post_rating_sheet.dart';
 import 'package:dalil_hama/features/post/presentation/widget/post_scheme_card.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +70,42 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ),
-                          Icon(Icons.abc),
+                        ],
+                      ),
+                      16.height(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              context.translation.ratings,
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.star),
+                            onPressed: () {
+                              if (getIt<AuthCubit>().state.authenticated) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => PostRatingSheet(
+                                    id: state.id,
+                                    onDone: (v) {
+                                      getIt<PostRepository>().rate(state.id, v);
+                                    },
+                                  ),
+                                );
+                              } else {
+                                PopUps(
+                                  context: context,
+                                ).showCustomDialog(widget: LoginFirstDialog());
+                              }
+                            },
+                          ),
+                          Text(
+                            "5/${state.ratingAvg.toStringAsFixed(1)}",
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
                         ],
                       ),
                       16.height(),

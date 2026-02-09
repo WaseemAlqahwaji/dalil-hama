@@ -13,6 +13,8 @@ class PostModel {
   final LocationModel? location;
   @JsonKey(fromJson: _fromJson)
   final String service;
+  final double ratingAvg;
+  final double ratingCount;
 
   PostModel({
     required this.title,
@@ -21,6 +23,8 @@ class PostModel {
     this.location,
     required this.service,
     required this.id,
+    this.ratingAvg = 0,
+    this.ratingCount = 0,
   });
 
   factory PostModel.fromJson(Map<String, dynamic> json) =>
@@ -36,6 +40,8 @@ extension MapToDomain on PostModel {
     serviceId: service,
     location: location?.toDomain(),
     id: id,
-    attributes: []
+    attributes: [],
+    ratingCount: ratingCount,
+    ratingAvg: ratingAvg,
   );
 }

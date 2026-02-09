@@ -32,9 +32,12 @@ class _UserBuilderState extends State<UserBuilder> {
     }
   }
 
+  var cubit = getIt<AuthCubit>();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
+      bloc: cubit,
       builder: (context, state) {
         if (state.authenticated) {
           return widget.builder.call(context, state.user);
