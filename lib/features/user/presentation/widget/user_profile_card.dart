@@ -1,8 +1,10 @@
 import 'package:core_package/core_package.dart';
+import 'package:core_package/generated/core_translation/core_translations.dart';
 import 'package:dalil_hama/features/auth/domain/repository/auth_repository.dart';
 import 'package:dalil_hama/features/auth/presentation/page/auth_login_page.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/features/core/presentation/widgets/bloc_consumers/user_builder.dart';
+import 'package:dalil_hama/features/core/presentation/widgets/dialogs/dialog_util.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +61,16 @@ class _UserProfileCardState extends State<UserProfileCard> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    getIt<AuthRepository>().logout();
+                    PopUps(
+                      context: context,
+                      onAccept: () {
+                        getIt<AuthRepository>().logout();
+                      },
+                    ).showConfirmDialog(
+                      description: CoreTranslations.of(
+                        context,
+                      )!.doUWantToLogOut,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).appSchema.red,

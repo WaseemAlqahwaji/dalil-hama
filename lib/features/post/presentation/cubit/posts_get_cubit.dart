@@ -38,10 +38,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
     result.fold((l) => emit(state.setFailureState(l)), (r) {
       pageGpl = r.pageInfo;
       emit(
-        state.setSuccessState(
-          r.post,
-          r.pageInfo.hasNextPage ? r.post.length + 1 : r.post.length,
-        ),
+        state.setSuccessState(r.post, hasReachedEnd: !r.pageInfo.hasNextPage),
       );
     });
   }
@@ -54,12 +51,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
     res.fold((e) => emit(state.setPaginateFailureState(e)), (r) {
       pageGpl = r.pageInfo;
       var items = [...state.items, ...r.post];
-      emit(
-        state.setSuccessState(
-          items,
-          pageGpl!.hasNextPage ? items.length + 1 : items.length,
-        ),
-      );
+      emit(state.setSuccessState(items, hasReachedEnd: !pageGpl!.hasNextPage));
     });
   }
 }

@@ -244,12 +244,6 @@ abstract class Translations {
   /// **'الاسم الكامل'**
   String get fullname;
 
-  /// No description provided for @username.
-  ///
-  /// In ar, this message translates to:
-  /// **'اسم المستخدم'**
-  String get username;
-
   /// No description provided for @fieldRequiredMessage.
   ///
   /// In ar, this message translates to:
@@ -267,6 +261,12 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'استعادة'**
   String get restore;
+
+  /// No description provided for @username.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم المستخدم'**
+  String get username;
 
   /// No description provided for @name.
   ///
@@ -297,6 +297,12 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك'**
   String get weSendResetPasswordLinkToYourEmail;
+
+  /// No description provided for @more.
+  ///
+  /// In ar, this message translates to:
+  /// **'المزيد'**
+  String get more;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

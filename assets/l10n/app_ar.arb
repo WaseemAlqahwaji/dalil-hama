@@ -24,7 +24,6 @@
   "register" : "إنشاء حساب",
   "letsGoIntoTheDalil" : "هيا بنا ندخل إلى دليل حلاوة الجبن",
   "fullname" : "الاسم الكامل",
-  "username" : "اسم المستخدم",
   "fieldRequiredMessage" : "هذا الحقل مطلوب",
   "forgetPassword" : "نسيت كلمة المرور؟",
   "restore" : "استعادة",
@@ -33,5 +32,6 @@
   "logOut" :"تسجيل الخروج",
   "pleaseLoginFirst" : "يرجى تسجيل الدخول أولاً",
   "ratings" : "التقييمات",
-  "weSendResetPasswordLinkToYourEmail" : "لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك"
+  "weSendResetPasswordLinkToYourEmail" : "لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك",
+  "more" : "المزيد"
 }
