@@ -111,4 +111,19 @@ class TranslationsAr extends Translations {
   @override
   String get weSendResetPasswordLinkToYourEmail =>
       'لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك';
+
+  @override
+  String get falsecase => 'خطأ';
+
+  @override
+  String get truecase => 'صحيح';
+
+  @override
+  String get sendEmail => 'ارسال بريد';
+
+  @override
+  String get callNow => 'اتصل الآن';
+
+  @override
+  String get openFile => 'فتح الملف';
 }

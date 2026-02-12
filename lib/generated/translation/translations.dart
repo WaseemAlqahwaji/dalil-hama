@@ -297,6 +297,36 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك'**
   String get weSendResetPasswordLinkToYourEmail;
+
+  /// No description provided for @falsecase.
+  ///
+  /// In ar, this message translates to:
+  /// **'خطأ'**
+  String get falsecase;
+
+  /// No description provided for @truecase.
+  ///
+  /// In ar, this message translates to:
+  /// **'صحيح'**
+  String get truecase;
+
+  /// No description provided for @sendEmail.
+  ///
+  /// In ar, this message translates to:
+  /// **'ارسال بريد'**
+  String get sendEmail;
+
+  /// No description provided for @callNow.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتصل الآن'**
+  String get callNow;
+
+  /// No description provided for @openFile.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح الملف'**
+  String get openFile;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

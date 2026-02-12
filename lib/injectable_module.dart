@@ -49,7 +49,7 @@ abstract class InjectableModule {
       UnifiInterceptor(
         requestBody: true,
         requestHeader: true,
-        responseBody: true,
+        responseBody: false,
         responseHeader: true,
         request: true,
         usePrint: true,

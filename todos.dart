@@ -1,4 +1,4 @@
-//details
+//TODO
 //privacy
 //signUp
 //getProfile
