@@ -85,6 +85,9 @@ class TranslationsAr extends Translations {
   String get fullname => 'الاسم الكامل';
 
   @override
+  String get username => 'اسم المستخدم';
+
+  @override
   String get fieldRequiredMessage => 'هذا الحقل مطلوب';
 
   @override
@@ -92,9 +95,6 @@ class TranslationsAr extends Translations {
 
   @override
   String get restore => 'استعادة';
-
-  @override
-  String get username => 'اسم المستخدم';
 
   @override
   String get name => 'الإسم';
@@ -111,6 +111,21 @@ class TranslationsAr extends Translations {
   @override
   String get weSendResetPasswordLinkToYourEmail =>
       'لقد أرسلنا رابط لاعادة تعيين كلمة المرور الى ايميلك';
+
+  @override
+  String get falsecase => 'خطأ';
+
+  @override
+  String get truecase => 'صحيح';
+
+  @override
+  String get sendEmail => 'ارسال بريد';
+
+  @override
+  String get callNow => 'اتصل الآن';
+
+  @override
+  String get openFile => 'فتح الملف';
 
   @override
   String get more => 'المزيد';

@@ -5,13 +5,32 @@ class SchemaAttribute {
   final String title;
   final SchemaFieldType type;
 
+  bool get isText =>
+      [
+        SchemaFieldType.date,
+        SchemaFieldType.dateTime,
+        SchemaFieldType.email,
+        SchemaFieldType.decimal,
+        SchemaFieldType.phoneNumber,
+        SchemaFieldType.kEnum,
+        SchemaFieldType.kInt,
+        SchemaFieldType.float,
+        SchemaFieldType.string,
+        SchemaFieldType.timeSpan,
+        SchemaFieldType.bool,
+        SchemaFieldType.address,
+        SchemaFieldType.long,
+      ].contains(type);
+
+       bool get execluded =>
+      [
+        // SchemaFieldType.file,
+        SchemaFieldType.json
+      ].contains(type);
+
   @override
   String toString() {
-    return {
-      "type": type,
-      "title": title,
-      "value": value,
-    }.toString();
+    return {"type": type, "title": title, "value": value}.toString();
   }
 
   SchemaAttribute({

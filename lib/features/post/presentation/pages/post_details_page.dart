@@ -43,91 +43,107 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
           },
         ),
       ),
-      body: ConsumerWidget(
-        cubit: cubit,
-        childBuilder: (context, state) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    children: [
-                      16.height(),
-                      ImageWidget(
-                        url: state.imageUrl,
-                        borderRadius: BorderRadius.circular(16),
-                        width: double.infinity,
-                        height: 250,
-                      ),
-                      16.height(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              state.title,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                          ),
-                        ],
-                      ),
-                      16.height(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              context.translation.ratings,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.star),
-                            onPressed: () {
-                              if (getIt<AuthCubit>().state.authenticated) {
-                                showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => PostRatingSheet(
-                                    id: state.id,
-                                    onDone: (v) {
-                                      getIt<PostRepository>().rate(state.id, v);
-                                    },
-                                  ),
-                                );
-                              } else {
-                                PopUps(
-                                  context: context,
-                                ).showCustomDialog(widget: LoginFirstDialog());
-                              }
-                            },
-                          ),
-                          Text(
-                            "5/${state.ratingAvg.toStringAsFixed(1)}",
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        ],
-                      ),
-                      16.height(),
-                      ListView.separated(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => PostSchemeCard(
-                          schemaAttribute: state.attributes[index],
+      body: Container(
+        constraints: BoxConstraints.expand(),
+        child: ConsumerWidget(
+          cubit: cubit,
+          childBuilder: (context, state) {
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Column(
+                      children: [
+                        16.height(),
+                        ImageWidget(
+                          url: state.imageUrl,
+                          borderRadius: BorderRadius.circular(16),
+                          width: double.infinity,
+                          height: 250,
                         ),
-                        separatorBuilder: (context, index) => 8.height(),
-                        itemCount: state.attributes.length,
-                      ),
-                      16.height(),
-                    ],
+                        16.height(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                state.title,
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                            ),
+                          ],
+                        ),
+                        16.height(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                context.translation.ratings,
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.star),
+                              onPressed: () {
+                                if (getIt<AuthCubit>().state.authenticated) {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (context) => PostRatingSheet(
+                                      id: state.id,
+                                      onDone: (v) {
+                                        getIt<PostRepository>().rate(
+                                          state.id,
+                                          v,
+                                        );
+                                      },
+                                    ),
+                                  );
+                                } else {
+                                  PopUps(context: context).showCustomDialog(
+                                    widget: LoginFirstDialog(),
+                                  );
+                                }
+                              },
+                            ),
+                            Text(
+                              "5/${state.ratingAvg.toStringAsFixed(1)}",
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ],
+                        ),
+                        16.height(),
+                        ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            if (state.attributes[index].execluded) {
+                              return const SizedBox.shrink();
+                            }
+
+                            return Column(
+                              children: [
+                                PostSchemeCard(
+                                  schemaAttribute: state.attributes[index],
+                                ),
+                                16.height(),
+                              ],
+                            );
+                          },
+                          itemCount: state.attributes.length,
+                        ),
+                        16.height(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
-        onRetry: () => cubit.get(widget.id),
+                ],
+              ),
+            );
+          },
+          onRetry: () => cubit.get(widget.id),
+        ),
       ),
     );
   }
