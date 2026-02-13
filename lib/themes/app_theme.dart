@@ -24,7 +24,7 @@ class AppTheme {
     ),
     scaffoldBackgroundColor: Colors.transparent,
     cardColor: _schema.shapeColor.cardColor,
-        
+
     brightness: _schema.brightness,
     inputDecorationTheme: InputDecorationTheme(
       disabledBorder: OutlineInputBorder(
@@ -163,8 +163,21 @@ class AppTheme {
         backgroundColor: _schema.primaryColor,
         foregroundColor: _schema.white,
         alignment: Alignment.center,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         textStyle: TextStyle(fontFamily: fontFamily, fontSize: 16),
+      ),
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: _schema.shapeColor.backgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(6),
+      ),
+      actionsPadding: EdgeInsets.all(8),
+      contentTextStyle: TextStyle(
+        fontSize: 16,
+        fontFamily: fontFamily,
+        color: _schema.textColor.title,
+        fontWeight: FontWeight.bold,
       ),
     ),
   );

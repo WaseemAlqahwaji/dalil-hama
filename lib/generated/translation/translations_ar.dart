@@ -126,4 +126,25 @@ class TranslationsAr extends Translations {
 
   @override
   String get openFile => 'فتح الملف';
+
+  @override
+  String get more => 'المزيد';
+
+  @override
+  String get personalInfo => 'المعلومات الشخصية';
+
+  @override
+  String get privacyAndPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get termsOfUse => 'شروط الاستخدام';
+
+  @override
+  String get iHadRead => 'لقد قرأت';
+
+  @override
+  String get and => 'و';
+
+  @override
+  String get showInMap => 'عرض على الخريطة';
 }

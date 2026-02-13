@@ -327,6 +327,48 @@ abstract class Translations {
   /// In ar, this message translates to:
   /// **'فتح الملف'**
   String get openFile;
+
+  /// No description provided for @more.
+  ///
+  /// In ar, this message translates to:
+  /// **'المزيد'**
+  String get more;
+
+  /// No description provided for @personalInfo.
+  ///
+  /// In ar, this message translates to:
+  /// **'المعلومات الشخصية'**
+  String get personalInfo;
+
+  /// No description provided for @privacyAndPolicy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة الخصوصية'**
+  String get privacyAndPolicy;
+
+  /// No description provided for @termsOfUse.
+  ///
+  /// In ar, this message translates to:
+  /// **'شروط الاستخدام'**
+  String get termsOfUse;
+
+  /// No description provided for @iHadRead.
+  ///
+  /// In ar, this message translates to:
+  /// **'لقد قرأت'**
+  String get iHadRead;
+
+  /// No description provided for @and.
+  ///
+  /// In ar, this message translates to:
+  /// **'و'**
+  String get and;
+
+  /// No description provided for @showInMap.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض على الخريطة'**
+  String get showInMap;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

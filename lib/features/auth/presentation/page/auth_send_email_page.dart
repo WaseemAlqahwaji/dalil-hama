@@ -49,7 +49,7 @@ class _AuthSendEmailPageState extends State<AuthSendEmailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  Assets.images.logo.svg(),
+                  Assets.images.logoSvg.svg(),
                   24.height(),
                   Text(
                     context.translation.dalilHama,

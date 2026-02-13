@@ -38,11 +38,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
     result.fold((l) => emit(state.setFailureState(l)), (r) {
       pageGpl = r.pageInfo;
       emit(
-        state.setSuccessState(
-          hasReachedEnd: pageGpl!.hasNextPage,
-          r.post,
-          // r.pageInfo.hasNextPage ? r.post.length + 1 : r.post.length,
-        ),
+        state.setSuccessState(r.post, hasReachedEnd: !r.pageInfo.hasNextPage),
       );
     });
   }
@@ -56,12 +52,8 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
       pageGpl = r.pageInfo;
       var items = [...state.items, ...r.post];
       emit(
-        state.setSuccessState(
-          hasReachedEnd: pageGpl!.hasNextPage,
-          items,
-          // pageGpl!.hasNextPage ? items.length + 1 : items.length,
-        ),
-      );
+        state.setSuccessState(items, hasReachedEnd: !pageGpl!.hasNextPage),
+      ); // TODO: here you should fuck salem
     });
   }
 }

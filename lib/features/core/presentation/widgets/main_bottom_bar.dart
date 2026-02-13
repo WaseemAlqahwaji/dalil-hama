@@ -54,9 +54,10 @@ class _MainBottomBarState extends State<MainBottomBar> {
             // ),
             Expanded(
               child: _BottomIcon(
-                title: context.translation.settings,
+                title: context.translation.more,
                 route: SettingsPage.path,
                 image: Assets.icons.settings,
+
               ),
             ),
           ],

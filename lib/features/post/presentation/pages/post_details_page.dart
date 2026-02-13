@@ -2,6 +2,7 @@ import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:dalil_hama/features/core/presentation/page/gradient_scaffold.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
+import 'package:dalil_hama/features/core/presentation/utils/map_lancher.dart';
 import 'package:dalil_hama/features/core/presentation/widgets/dialogs/dialog_util.dart';
 import 'package:dalil_hama/features/core/presentation/widgets/dialogs/login_first_dialog.dart';
 import 'package:dalil_hama/features/post/domain/entity/post.dart';
@@ -12,6 +13,7 @@ import 'package:dalil_hama/features/post/presentation/widget/post_scheme_card.da
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PostDetailsPage extends StatefulWidget {
   final String id;
@@ -68,10 +70,23 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                             children: [
                               MapWidget(
                                 height: 200,
+                                ignore: true,
                                 width: double.infinity,
                                 latLng: LatLng(
                                   state.location!.latitude,
                                   state.location!.longitude,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                child: TextButton(
+                                  child: Text(context.translation.showInMap),
+                                  onPressed: () async {
+                                    await openMap(
+                                      state.location!.latitude,
+                                      state.location!.longitude,
+                                    );
+                                  },
                                 ),
                               ),
                             ],

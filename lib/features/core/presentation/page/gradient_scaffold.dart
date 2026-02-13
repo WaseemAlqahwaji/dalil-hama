@@ -44,7 +44,7 @@ class _GradientScaffoldState extends ScaffoldState {
               bottom: 0,
               // top: kToolbarHeight + 64,
               top: widget.appBar?.preferredSize.height != null
-                  ? widget.appBar!.preferredSize.height + 64
+                  ? widget.appBar!.preferredSize.height + 24
                   : widget.appBar == null
                   ? 0
                   : kToolbarHeight + 64,

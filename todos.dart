@@ -3,4 +3,3 @@
 //signUp
 //getProfile
 //updateProfile
-//make password field text colorable

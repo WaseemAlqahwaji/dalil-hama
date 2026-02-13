@@ -56,9 +56,10 @@ class _AppState extends State<App> {
               listeners: [
                 BlocListener<AuthCubit, AuthState>(
                   bloc: authCubit,
-                  listenWhen: (v1, v2) => v1.authState != v2.authState && !v1.authenticated,
+                  listenWhen: (v1, v2) =>
+                      v1.authState != v2.authState && !v1.authenticated,
                   listener: (context, state) {
-                      goRouterConfig.go(HomePage.path);
+                    goRouterConfig.go(HomePage.path);
                   },
                 ),
               ],

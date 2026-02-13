@@ -60,7 +60,7 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
-                      Assets.images.logo.svg(),
+                      Assets.images.logoSvg.svg(),
                       24.height(),
                       Text(
                         context.translation.dalilHama,
@@ -126,6 +126,19 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                               context.pushNamed(AuthRegisterPage.path);
                             },
                             child: Text(context.translation.register),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(context.translation.iHadRead),
+                          TextButton(
+                            child: Text(context.translation.privacyAndPolicy),
+                            onPressed: () {},
+                          ),
+                          TextButton(
+                            child: Text(context.translation.termsOfUse),
+                            onPressed: () {},
                           ),
                         ],
                       ),
