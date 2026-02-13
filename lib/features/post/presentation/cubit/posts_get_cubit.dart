@@ -39,8 +39,9 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
       pageGpl = r.pageInfo;
       emit(
         state.setSuccessState(
+          hasReachedEnd: pageGpl!.hasNextPage,
           r.post,
-          r.pageInfo.hasNextPage ? r.post.length + 1 : r.post.length,
+          // r.pageInfo.hasNextPage ? r.post.length + 1 : r.post.length,
         ),
       );
     });
@@ -56,8 +57,9 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
       var items = [...state.items, ...r.post];
       emit(
         state.setSuccessState(
+          hasReachedEnd: pageGpl!.hasNextPage,
           items,
-          pageGpl!.hasNextPage ? items.length + 1 : items.length,
+          // pageGpl!.hasNextPage ? items.length + 1 : items.length,
         ),
       );
     });

@@ -105,6 +105,7 @@ class _AuthRegisterPageState extends State<AuthRegisterPage> {
                   PasswordInputField(
                     passwordController: passwordController,
                     hasConfirmPassword: true,
+                    passwordCheckColor: Theme.of(context).textTheme.labelMedium?.color,
                   ),
                   24.height(),
                   SizedBox(

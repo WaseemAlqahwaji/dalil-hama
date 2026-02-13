@@ -3,7 +3,6 @@ import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:dalil_hama/features/post/presentation/widget/views/post_view_texts_widget.dart';
 import 'package:dalil_hama/features/schema/domain/entity/schema_attribute.dart';
 import 'package:dalil_hama/features/schema/domain/enum/schema_field_type.dart';
-import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,6 +28,7 @@ class PostSchemeCard extends StatelessWidget {
             ],
             if (schemaAttribute.type == SchemaFieldType.image) ...[
               ImageWidget(
+                borderRadius: BorderRadius.circular(8),
                 url: schemaAttribute.value,
                 height: 200,
                 width: double.infinity,

@@ -9,8 +9,6 @@ import 'package:dalil_hama/features/post/domain/repository/post_repository.dart'
 import 'package:dalil_hama/features/post/presentation/cubit/post_get_by_id_cubit.dart';
 import 'package:dalil_hama/features/post/presentation/widget/post_rating_sheet.dart';
 import 'package:dalil_hama/features/post/presentation/widget/post_scheme_card.dart';
-import 'package:dalil_hama/features/post/presentation/widget/views/post_view_texts_widget.dart';
-import 'package:dalil_hama/features/schema/domain/enum/schema_field_type.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,6 +63,21 @@ class _PostDetailsPageState extends State<PostDetailsPage> {
                           height: 250,
                         ),
                         16.height(),
+                        if (state.location != null) ...[
+                          Stack(
+                            children: [
+                              MapWidget(
+                                height: 200,
+                                width: double.infinity,
+                                latLng: LatLng(
+                                  state.location!.latitude,
+                                  state.location!.longitude,
+                                ),
+                              ),
+                            ],
+                          ),
+                          16.height(),
+                        ],
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
