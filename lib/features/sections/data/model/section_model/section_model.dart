@@ -8,7 +8,7 @@ part 'section_model.g.dart';
 class SectionModel {
   final String id;
   final String title;
-  final String description;
+  final String? description;
   final String? imageUrl;
   final SectionType type;
   final String? parentId;

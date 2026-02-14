@@ -11,7 +11,7 @@ part of 'section_model.dart';
 SectionModel _$SectionModelFromJson(Map json) => SectionModel(
   id: json['id'] as String,
   title: json['title'] as String,
-  description: json['description'] as String,
+  description: json['description'] as String?,
   imageUrl: json['imageUrl'] as String?,
   type: $enumDecode(_$SectionTypeEnumMap, json['type']),
   parentId: json['parentId'] as String?,

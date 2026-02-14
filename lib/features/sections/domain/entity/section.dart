@@ -5,7 +5,7 @@ class Section {
   final String? parentId;
   final String title;
   final String? imageUrl;
-  final String description;
+  final String? description;
   final int? level;
   final List<Section> children;
   final SectionType type;

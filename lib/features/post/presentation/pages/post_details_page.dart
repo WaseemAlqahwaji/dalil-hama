@@ -13,7 +13,6 @@ import 'package:dalil_hama/features/post/presentation/widget/post_scheme_card.da
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class PostDetailsPage extends StatefulWidget {
   final String id;

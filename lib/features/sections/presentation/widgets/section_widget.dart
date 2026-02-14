@@ -51,12 +51,13 @@ class _SectionWidgetState extends State<SectionWidget> {
                     maxLines: 4,
                   ),
                   4.height(),
-                  Text(
-                    widget.section.description,
-                    textAlign: TextAlign.start,
-                    style: Theme.of(context).textTheme.titleSmall,
-                    maxLines: 2,
-                  ),
+                  if (widget.section.description != null)
+                    Text(
+                      widget.section.description!,
+                      textAlign: TextAlign.start,
+                      style: Theme.of(context).textTheme.titleSmall,
+                      maxLines: 2,
+                    ),
                 ],
               ),
             ),

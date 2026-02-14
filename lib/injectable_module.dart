@@ -1,7 +1,6 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/data/utils/token_interceptor.dart';
 import 'package:dalil_hama/injection.dart';
-import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
@@ -30,22 +29,22 @@ abstract class InjectableModule {
     );
     dio.interceptors.addAll([
       getIt<TokenInterceptor>(),
-      DioCacheInterceptor(
-        config: [
-          DioCacheStoreConfig(
-            endPoint: "/api/Sections",
-            age: Duration(days: 1),
-            behavior: DioCacheStoreBehavior.restoreAlways,
-            matchStrategy: MatchingStrategy.pathToEnd,
-          ),
-          DioCacheStoreConfig(
-            endPoint: "/api/schemas",
-            age: Duration(days: 1),
-            behavior: DioCacheStoreBehavior.restoreAlways,
-            matchStrategy: MatchingStrategy.pathToEnd,
-          ),
-        ],
-      ),
+      // DioCacheInterceptor(
+      //   config: [
+      //     DioCacheStoreConfig(
+      //       endPoint: "/api/Sections",
+      //       age: Duration(days: 1),
+      //       behavior: DioCacheStoreBehavior.restoreAlways,
+      //       matchStrategy: MatchingStrategy.pathToEnd,
+      //     ),
+      //     DioCacheStoreConfig(
+      //       endPoint: "/api/schemas",
+      //       age: Duration(days: 1),
+      //       behavior: DioCacheStoreBehavior.restoreAlways,
+      //       matchStrategy: MatchingStrategy.pathToEnd,
+      //     ),
+      //   ],
+      // ),
       UnifiInterceptor(
         requestBody: true,
         requestHeader: true,
