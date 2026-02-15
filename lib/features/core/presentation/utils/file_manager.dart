@@ -11,6 +11,6 @@ class FileManager {
     if (name == null) {
       return null;
     }
-    return "${configuration.getBaseUrl}static/$name";
+    return "${configuration.imageBaseurl}$name";
   }
 }

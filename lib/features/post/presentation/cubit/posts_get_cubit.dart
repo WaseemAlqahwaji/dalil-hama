@@ -53,7 +53,7 @@ class PostsGetCubit extends PaginationCubit<Post, PostGetParams> {
       var items = [...state.items, ...r.post];
       emit(
         state.setSuccessState(items, hasReachedEnd: !pageGpl!.hasNextPage),
-      ); // TODO: here you should fuck salem
+      ); 
     });
   }
 }

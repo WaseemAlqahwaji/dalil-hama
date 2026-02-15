@@ -1,4 +1,5 @@
 import 'package:core_package/core_package.dart';
+import 'package:dalil_hama/features/core/presentation/utils/is_link.dart';
 import 'package:dalil_hama/features/sections/domain/entity/section.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,12 @@ class SectionWidget extends StatefulWidget {
 }
 
 class _SectionWidgetState extends State<SectionWidget> {
+  @override
+  void initState() {
+    // print(widget.section.imageUrl);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,8 +39,7 @@ class _SectionWidgetState extends State<SectionWidget> {
               blendMode: BlendMode.darken,
               placeHolder: Container(),
               borderRadius: BorderRadius.circular(16),
-              url:
-                  widget.section.imageUrl,
+              url: getImageUrl(widget.section.imageUrl),
             ),
           ),
           Positioned.fill(

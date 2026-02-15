@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 
 abstract class Configuration {
   String get getBaseUrl;
+  String get imageBaseurl;
 }
 
 @Singleton(as: Configuration, env: ["dev"])
@@ -9,6 +10,10 @@ class DevConfiguration extends Configuration {
   @override
   String get getBaseUrl =>
       "http://ec2-51-20-92-68.eu-north-1.compute.amazonaws.com:5001/";
+
+  @override
+  String get imageBaseurl =>
+      "http://ec2-51-20-92-68.eu-north-1.compute.amazonaws.com:5001";
 }
 
 class AppEnvironment {
