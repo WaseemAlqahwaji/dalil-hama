@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/post/domain/entity/post.dart';
 import 'package:dalil_hama/features/post/domain/repository/post_repository.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

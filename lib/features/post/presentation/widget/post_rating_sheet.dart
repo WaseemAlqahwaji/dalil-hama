@@ -2,7 +2,6 @@ import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/presentation/utils/ext/tr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
-import 'package:go_router/go_router.dart';
 
 class PostRatingSheet extends StatefulWidget {
   final String id;

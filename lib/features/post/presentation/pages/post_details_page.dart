@@ -12,7 +12,6 @@ import 'package:dalil_hama/features/post/presentation/widget/post_rating_sheet.d
 import 'package:dalil_hama/features/post/presentation/widget/post_scheme_card.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostDetailsPage extends StatefulWidget {
   final String id;

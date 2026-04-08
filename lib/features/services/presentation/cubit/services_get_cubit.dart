@@ -1,7 +1,6 @@
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/services/domain/entity/service.dart';
 import 'package:dalil_hama/features/services/domain/repository/services_repository.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable()

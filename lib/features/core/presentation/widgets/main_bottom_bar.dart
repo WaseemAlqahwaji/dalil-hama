@@ -7,7 +7,6 @@ import 'package:dalil_hama/features/map/presentation/map_page.dart';
 import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class MainBottomBar extends StatefulWidget {
   const MainBottomBar({super.key});

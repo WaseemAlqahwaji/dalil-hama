@@ -9,7 +9,6 @@ import 'package:dalil_hama/generated/generated_assets/assets.gen.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AuthLoginPage extends StatefulWidget {
   static String path = "/AuthLoginPage";

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/domain/entity/failures.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 typedef FutureEitherFailureOrData<T> = Future<Either<Failure, T>> Function();
 

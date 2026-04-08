@@ -9,11 +9,11 @@ abstract class Configuration {
 class DevConfiguration extends Configuration {
   @override
   String get getBaseUrl =>
-      "http://ec2-51-20-92-68.eu-north-1.compute.amazonaws.com:5001/";
+      "http://hamaguide-alb-1031439526.eu-north-1.elb.amazonaws.com/";
 
   @override
   String get imageBaseurl =>
-      "http://ec2-51-20-92-68.eu-north-1.compute.amazonaws.com:5001";
+      "http://hamaguide-alb-1031439526.eu-north-1.elb.amazonaws.com";
 }
 
 class AppEnvironment {

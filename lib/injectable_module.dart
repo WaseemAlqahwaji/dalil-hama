@@ -2,7 +2,6 @@ import 'package:core_package/core_package.dart';
 import 'package:dalil_hama/features/core/data/utils/token_interceptor.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 @module
 abstract class InjectableModule {

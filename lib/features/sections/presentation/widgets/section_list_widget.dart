@@ -6,7 +6,6 @@ import 'package:dalil_hama/features/sections/presentation/cubit/section_get_cubi
 import 'package:dalil_hama/features/sections/presentation/widgets/section_widget.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SectionListWidget extends StatefulWidget {
   const SectionListWidget({super.key, required this.canBack});

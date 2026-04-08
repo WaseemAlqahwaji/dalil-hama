@@ -8,7 +8,6 @@ import 'package:dalil_hama/features/post/presentation/pages/post_details_page.da
 import 'package:dalil_hama/features/post/presentation/widget/post_list_widget.dart';
 import 'package:dalil_hama/injection.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class PostsPage extends StatefulWidget {
   static String path = "/PostsPage";

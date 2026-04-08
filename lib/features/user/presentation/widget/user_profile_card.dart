@@ -8,7 +8,6 @@ import 'package:dalil_hama/features/core/presentation/widgets/dialogs/dialog_uti
 import 'package:dalil_hama/injection.dart';
 import 'package:dalil_hama/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class UserProfileCard extends StatefulWidget {
   const UserProfileCard({super.key});
